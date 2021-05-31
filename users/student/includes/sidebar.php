@@ -8,7 +8,7 @@
             <a href="#" class="side-nav-item">
                 <div><i class="fa fa-map-marker mr-3" aria-hidden="true"></i> Attachment</div>
             </a>
-            <a href="#" class="side-nav-item">
+            <a href="tests.php" class="side-nav-item">
                 <div><i class="fa fa-list mr-3" aria-hidden="true"></i> Tests</div>
             </a>
         </div>
