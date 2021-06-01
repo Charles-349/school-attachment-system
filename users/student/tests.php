@@ -1,8 +1,12 @@
 <?php
 session_start();
+include "includes/config.php";
+include "myFunctions.php";
+
 if (!isset($_SESSION['studentid'])) {
     header("location: login.php");
 }
+$sid  = $_SESSION['studentid'];
 ?>
 
 <?php include "includes/header.php"; ?>
@@ -15,19 +19,38 @@ if (!isset($_SESSION['studentid'])) {
             <div class="card m-2" style="width: 18rem;">
                 <img class="card-img-top" src="images/hardware.jpeg" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h3>Hardware Test</h3>
+
+                    <h5><?php echo numOfQuestionsAnswerd("hardware", $sid) ?> of 10 questions answered</h5>
+                    <?php if (numOfQuestionsAnswerd("hardware", $sid) < 10) : ?>
+                        <a href="starttest.php?test=hardware" class="btn btn-outline-success btn-lg">Take Test</a>
+                    <?php else : ?>
+                        <h4>Score: 9</h4>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="card m-2" style="width: 18rem;">
                 <img class="card-img-top" src="images/software.png" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h3>Software Test</h3>
+                    <h5><?php echo numOfQuestionsAnswerd("software", $sid) ?> of 10 questions answered</h5>
+                    <?php if (numOfQuestionsAnswerd("software", $sid) < 10) : ?>
+                        <a href="starttest.php?test=software" class="btn btn-outline-success btn-lg">Take Test</a>
+                    <?php else : ?>
+                        <h4>Score: 9</h4>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="card m-2" style="width: 18rem;">
                 <img class="card-img-top" src="images/networking.jpeg" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h3>Networking Test</h3>
+                    <h5><?php echo numOfQuestionsAnswerd("networking", $sid) ?> of 10 questions answered</h5>
+                    <?php if (numOfQuestionsAnswerd("networking", $sid) < 10) : ?>
+                        <a href="starttest.php?test=networking" class="btn btn-outline-success btn-lg">Take Test</a>
+                    <?php else : ?>
+                        <h4>Score: 9</h4>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

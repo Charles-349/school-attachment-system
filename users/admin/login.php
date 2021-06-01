@@ -1,29 +1,59 @@
-<?php
-if (!isset($_GET['loginas'])) {
-    header("location: choose.html");
-}
-$who = $_GET['loginas'];
-
-?>
-
 <?php include "includes/header.php" ?>
-        <div class="form login">
-            <?php
-            if($who == "companysupervisor"){
-                include "components/company_sup_login_form.php";
-            }else if($who == "schoolsupervisor"){
-                include "components/school_sup_login_form.php";
-            }else{
-                include "components/student_login_form.php";
-
-            }
-
-            ?>
+<div class="form login">
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <h3 class="my-2 mb-3">Student Login</h3>
+        <div class="error-text"></div>
+        <div class="field input">
+            <label for="">Registration Number</label>
+            <input type="text" name="regno" placeholder="Enter your reg number" />
         </div>
-    </div>
+        <div class="field input">
+            <label for="">Password</label>
+            <input type="password" name="password" placeholder="Enter your password" />
+            <i class="fas fa-eye"></i>
+        </div>
+        <div class="field button">
+            <input type="submit" name="" value="Continue" />
+        </div>
+        <div class="link"><a href="#">Forgot password?</a></div>
+        <div class="button2">
+            <a href="register.php">Register Now</a>
+        </div>
+    </form>
+</div>
+</div>
 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/q.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    const form = document.querySelector(".login form"),
+        continueBtn = form.querySelector(".button input"),
+        errorText = form.querySelector(".error-text");
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+    };
+
+    continueBtn.onclick = () => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "utils/login.php", true);
+        xhr.onload = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                    if (data === "success") {
+                        location.href = "index.php";
+                        errorText.style.display = "none";
+                    } else {
+                        errorText.style.display = "block";
+                        errorText.textContent = data;
+                    }
+                }
+            }
+        };
+        let formData = new FormData(form);
+        xhr.send(formData);
+    };
+</script>
 </body>
 
 </html>

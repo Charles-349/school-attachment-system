@@ -17,13 +17,19 @@ include "myFunctions.php";
         <div class="row ml-2">
             <div class="card col col-sm-6 col-md-6 col-lg-3 m-1">
                 <div class="card-body">
-                    <h5>Applied Attachments</h5>
+                    <h5 class="text-center">Attachments</h5>
                     <h1 class="text-center text-primary">0</h1>
                 </div>
             </div>
             <div class="card col col-sm-6 col-md-6 col-lg-3 m-1">
                 <div class="card-body">
-                    <h5>Applied Attachments</h5>
+                    <h5 class="text-center">Students</h5>
+                    <h1 class="text-center text-primary">0</h1>
+                </div>
+            </div>
+            <div class="card col col-sm-6 col-md-6 col-lg-3 m-1">
+                <div class="card-body">
+                    <h5 class="text-center">Supervisors</h5>
                     <h1 class="text-center text-primary">0</h1>
                 </div>
             </div>
