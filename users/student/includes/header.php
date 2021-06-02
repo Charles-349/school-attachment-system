@@ -19,12 +19,8 @@
         <h3>SAS</h3>
       </div>
       <div class="nav">
-        <a href="index.php">Home</a>
-        <a href="index.php">About us</a>
-        <a href="index.php">Contact us</a>
-
         <?php if (isset($_SESSION['studentid'])) : ?>
-          <a href="logout.php" class="btn btn-primary">Logout</a>
+          <a href="logout.php" class="btn" style="background-color: orange;">Logout</a>
         <?php endif ?>
       </div>
     </header>

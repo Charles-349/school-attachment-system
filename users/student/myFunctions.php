@@ -43,10 +43,52 @@ function getBestScored($sid){
     $networkingScore = calculateScore("networking", $sid);
 
     if($hardwareScore > $softwareScore && $hardwareScore > $networkingScore){
-        return $hardwareScore;
+        return "hardware";
     }else if($softwareScore > $hardwareScore && $softwareScore > $networkingScore){
-        return $softwareScore;
+        return "software";
     }else{
-        return $networkingScore;
+        return "networking";
     }
+}
+
+function getAttachmentDetails($sid){
+    include "includes/config.php";
+    $checkresult = mysqli_query($conn, "SELECT * FROM tbl_registered_attachments where studentid = '$sid'");
+    $array = mysqli_fetch_assoc($checkresult);
+
+    if(mysqli_num_rows($checkresult)>0){
+            ?>
+               <tr>
+                    <th>Company Name</th>
+                    <td><?php echo $array["companyname"] ?></td>
+                </tr>
+                <tr>
+                    <th>Company Location</th>
+                    <td><?php echo $array["companylocation"] ?></td>
+                </tr>
+                <tr>
+                    <th>Company Address</th>
+                    <td><?php echo $array["companyaddress"] ?></td>
+                </tr>
+                <tr>
+                    <th>Company Contacts</th>
+                    <td><?php echo $array["companycontact"] ?></td>
+                </tr>
+                <tr>
+                    <th>Role</th>
+                    <td><?php echo $array["role"] ?></td>
+                </tr>
+                <tr>
+                    <th>Duration</th>
+                    <td><?php echo $array["duration"] ?> weeks</td>
+                </tr>
+                <tr>
+                    <th>Start Date</th>
+                    <td><?php echo $array["startdate"] ?></td>
+                </tr>
+            <?php
+    }else{
+        echo "No Attachment Added";
+    }
+
 }

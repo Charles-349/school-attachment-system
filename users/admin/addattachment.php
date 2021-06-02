@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-12 col-lg-10">
                             <label>Description</label>
-                            <textarea name="description" class="form-control" placeholder="Enter password"></textarea>
+                            <textarea name="description" class="form-control" placeholder="Enter description"></textarea>
                         </div>
                     </div>
                     <button type="submit" id="addAttachmentBtn" class="btn btn-primary">Add</button>

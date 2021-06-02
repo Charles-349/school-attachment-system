@@ -76,10 +76,10 @@ $answerresult = mysqli_query($conn, "select * from tbl_answers where test = '$te
                 if (xhr.status === 200) {
                     let data = xhr.response;
                     if (data === "success") {
-                        location.href = `test.php?test=${test}&quiz=${qn+1}`;
+                        location.href = qn === 10 ? "tests.php": `test.php?test=${test}&quiz=${qn+1}`;
                     } else if (data === "answered") {
                         alert("Already answered this question")
-                        location.href = `test.php?test=${test}&quiz=${next}`;
+                        location.href = qn === 10 ? "tests.php": `test.php?test=${test}&quiz=${next}`;
                     } else {
                         alert(data);
                     }

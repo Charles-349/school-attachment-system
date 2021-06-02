@@ -28,10 +28,6 @@ $adminid  = $_SESSION['adminid'];
         <h3>SAS</h3>
       </div>
       <div class="nav">
-        <a href="index.php">Home</a>
-        <a href="index.php">About us</a>
-        <a href="index.php">Contact us</a>
-
-        <a href="logout.php" class="btn btn-primary">Logout</a>
+        <a href="logout.php" class="btn" tyle="background-color: orange;">Logout</a>
       </div>
     </header>
