@@ -1,18 +1,18 @@
 <?php
 include "functions_all.php";
-include "includes/header.php"; 
+include "includes/header.php";
 
 ?>
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 
     <div class="col col-sm-12 col-md-8 col-lg-9 main-content">
-        <h4 class="text-success my-5 ml-2">Admins</h4>
+        <h4 class="text-success my-5 ml-2">School Supervisors</h4>
         <hr>
         <div class="row">
             <div class="col mx-5 mb-2">
-                <h2 class="text-success">Add Admin</h2>
-                <form id="addAdminForm">
+                <h2 class="text-success">Add School Supervisor</h2>
+                <form id="addSchoolSupervisorForm">
                     <div class="row ">
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-5">
                             <label>First name</label>
@@ -23,6 +23,10 @@ include "includes/header.php";
                             <input name="lname" type="text" class="form-control" placeholder="Enter last name">
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-5">
+                            <label>Department</label>
+                            <input name="department" type="text" class="form-control" placeholder="Enter Department">
+                        </div>
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-5">
                             <label>Email address</label>
                             <input name="email" type="email" class="form-control" placeholder="Enter email">
                         </div>
@@ -31,7 +35,7 @@ include "includes/header.php";
                             <input name="password" type="text" class="form-control" placeholder="Enter password">
                         </div>
                     </div>
-                    <button type="submit" id="addAdminBtn" class="btn btn-primary">Add</button>
+                    <button type="submit" id="addSchoolSupervisorBtn" class="btn btn-primary">Add</button>
                 </form>
             </div>
         </div>
@@ -39,18 +43,20 @@ include "includes/header.php";
         <hr>
         <div class="row">
             <div class="col mx-5">
-                <h2 class="text-success">All Admin</h2>
+                <h2 class="text-success">All School Supervisors</h2>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">First name</th>
                             <th scope="col">Last name</th>
+                            <th scope="col">Department</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php getAllAdmins();?>
+                        <?php getAllSchoolSupervisors(); ?>
                     </tbody>
                 </table>
             </div>
@@ -59,25 +65,25 @@ include "includes/header.php";
 </section>
 
 <script>
-    const form = document.querySelector("#addAdminForm"),
-        addAdminBtn = form.querySelector("#addAdminBtn"),
+    const form = document.querySelector("#addSchoolSupervisorForm"),
+        addSchoolSupervisorBtn = form.querySelector("#addSchoolSupervisorBtn"),
         errorText = form.querySelector(".error-text");
 
     form.onsubmit = (e) => {
         e.preventDefault();
     };
 
-    addAdminBtn.onclick = () => {
+    addSchoolSupervisorBtn.onclick = () => {
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "utils/addAdmin.php", true);
+        xhr.open("POST", "utils/addSchoolSupervisor.php", true);
         xhr.onload = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     let data = xhr.response;
                     console.log("Data", data);
                     if (data === "success") {
-                        alert("Admin added")
-                        location.href = "admins.php";
+                        alert("Supervisor added")
+                        location.href = location.href
                     } else {
                         alert(data);
                     }

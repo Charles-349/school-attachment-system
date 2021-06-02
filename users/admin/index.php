@@ -1,14 +1,9 @@
-<?php
-session_start();
-if (!isset($_SESSION['studentid'])) {
-    header("location: login.php");
-}
-$sid  = $_SESSION['studentid'];
+<?php 
 
-include "myFunctions.php";
+include "functions_all.php";
+include "includes/header.php";
+
 ?>
-
-<?php include "includes/header.php"; ?>
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 
@@ -18,27 +13,26 @@ include "myFunctions.php";
             <div class="card col col-sm-6 col-md-6 col-lg-3 m-1">
                 <div class="card-body">
                     <h5 class="text-center">Attachments</h5>
-                    <h1 class="text-center text-primary">0</h1>
+                    <h1 class="text-center text-primary"><?php echo getNumOfAttachments() ?></h1>
                 </div>
             </div>
-            <div class="card col col-sm-6 col-md-6 col-lg-3 m-1">
+            <div class="card col-6 col-sm-6 col-md-6 col-lg-3 m-1">
                 <div class="card-body">
                     <h5 class="text-center">Students</h5>
-                    <h1 class="text-center text-primary">0</h1>
+                    <h1 class="text-center text-primary"><?php echo getNumOfStudents() ?></h1>
                 </div>
             </div>
-            <div class="card col col-sm-6 col-md-6 col-lg-3 m-1">
+            <div class="card col-6 col-sm-6 col-md-6 col-lg-3 m-1">
                 <div class="card-body">
-                    <h5 class="text-center">Supervisors</h5>
-                    <h1 class="text-center text-primary">0</h1>
+                    <h5 class="text-center">School Supervisors</h5>
+                    <h1 class="text-center text-primary"><?php echo getNumOfSchoolSupervisors() ?></h1>
                 </div>
             </div>
-        </div>
-        <div class="row m-2">
-            <div class="col">
-                <h2 class="text-success"><?php echo testsDone($sid) ?> Test Done</h2>
-                <h3>Average score N/A</h3>
-                <a href="tests.php" class="btn btn-primary">Go To Tests</a>
+            <div class="card col-6 col-sm-6 col-md-6 col-lg-3 m-1">
+                <div class="card-body">
+                    <h5 class="text-center">Company Supervisors</h5>
+                    <h1 class="text-center text-primary"><?php echo getNumOfCompanySupervisors() ?></h1>
+                </div>
             </div>
         </div>
     </div>

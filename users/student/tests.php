@@ -25,7 +25,7 @@ $sid  = $_SESSION['studentid'];
                     <?php if (numOfQuestionsAnswerd("hardware", $sid) < 10) : ?>
                         <a href="starttest.php?test=hardware" class="btn btn-outline-success btn-lg">Take Test</a>
                     <?php else : ?>
-                        <h4>Score: 9</h4>
+                        <h4>Score: <?php echo calculateScore("hardware", $sid)."/".numOfQuestionsAnswerd("hardware", $sid); ?></h4>
                     <?php endif ?>
                 </div>
             </div>
@@ -37,7 +37,7 @@ $sid  = $_SESSION['studentid'];
                     <?php if (numOfQuestionsAnswerd("software", $sid) < 10) : ?>
                         <a href="starttest.php?test=software" class="btn btn-outline-success btn-lg">Take Test</a>
                     <?php else : ?>
-                        <h4>Score: 9</h4>
+                        <h4>Score: <?php echo calculateScore("software", $sid)."/".numOfQuestionsAnswerd("software", $sid); ?></h4>
                     <?php endif ?>
                 </div>
             </div>
@@ -49,7 +49,7 @@ $sid  = $_SESSION['studentid'];
                     <?php if (numOfQuestionsAnswerd("networking", $sid) < 10) : ?>
                         <a href="starttest.php?test=networking" class="btn btn-outline-success btn-lg">Take Test</a>
                     <?php else : ?>
-                        <h4>Score: 9</h4>
+                        <h4>Score: <?php echo calculateScore("networking", $sid)."/".numOfQuestionsAnswerd("networking", $sid); ?></h4>
                     <?php endif ?>
                 </div>
             </div>

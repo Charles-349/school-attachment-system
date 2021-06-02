@@ -8,16 +8,22 @@
         <a href="admins.php" class="side-nav-item">
             <div> <i class="fa fa-home mr-3" aria-hidden="true"></i> Admins</div>
         </a>
+        <a href="schoolsupervisors.php" class="side-nav-item">
+            <div> <i class="fa fa-home mr-3" aria-hidden="true"></i> School Supervisors</div>
+        </a>
+        <a href="companysupervisors.php" class="side-nav-item">
+            <div> <i class="fa fa-home mr-3" aria-hidden="true"></i> Company Supervisors</div>
+        </a>
         <a href="attachments.php" class="side-nav-item">
             <div><i class="fa fa-map-marker mr-3" aria-hidden="true"></i>All Attachment</div>
         </a>
-        <a href="addattachments.php" class="side-nav-item">
+        <a href="addattachment.php" class="side-nav-item">
             <div> <i class="fa fa-home mr-3" aria-hidden="true"></i>Add Attachment</div>
         </a>
         <a href="students.php" class="side-nav-item">
             <div><i class="fa fa-map-marker mr-3" aria-hidden="true"></i>Students</div>
         </a>
-        <a href="tests.php" class="side-nav-item">
+        <a href="assignsupervisor.php" class="side-nav-item">
             <div><i class="fa fa-list mr-3" aria-hidden="true"></i>Assign Supervisor</div>
         </a>
     </div>

@@ -1,11 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['adminid'])) {
-  header("location: login.php");
-}
-$adminid  = $_SESSION['adminid'];
-
-?>
 
 <!DOCTYPE html>
 <html>
@@ -25,13 +17,10 @@ $adminid  = $_SESSION['adminid'];
   <div class="main-wrapper">
     <header>
       <div class="logo">
-        <h3>SAS</h3>
+        <h3><a style="color: #fff;" href="../../choose.html">SAS</a></h3>
       </div>
       <div class="nav">
-        <a href="index.php">Home</a>
         <a href="index.php">About us</a>
         <a href="index.php">Contact us</a>
-
-        <a href="logout.php" class="btn btn-primary">Logout</a>
       </div>
     </header>
