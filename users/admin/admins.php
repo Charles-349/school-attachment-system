@@ -1,11 +1,12 @@
 <?php
 session_start();
+include "includes/config.php";
 if (!isset($_SESSION['studentid'])) {
     header("location: login.php");
 }
 $sid  = $_SESSION['studentid'];
 
-include "myFunctions.php";
+$result = mysqli_query($conn, "SELECT * from admins");
 ?>
 
 <?php include "includes/header.php"; ?>
@@ -15,43 +16,102 @@ include "myFunctions.php";
     <div class="col col-sm-12 col-md-8 col-lg-9 main-content">
         <h4 class="text-success my-5 ml-2">Admins</h4>
         <hr>
-        <div class="row my-2">
-            <div class="col">
+        <div class="row">
+            <div class="col mx-5 mb-2">
                 <h2 class="text-success">Add Admin</h2>
-                <form>
-                    <div class="row">
-                        <div class="form-group col-12 col-sm-12 col-md-6">
+                <form id="addAdminForm">
+                    <div class="row ">
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-5">
                             <label>First name</label>
-                            <input type="text" class="form-control" placeholder="Enter first name">
+                            <input name="fname" type="text" class="form-control" placeholder="Enter first name">
                         </div>
-                        <div class="form-group col-12 col-sm-12 col-md-6">
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-5">
                             <label>Last name</label>
-                            <input type="text" class="form-control" placeholder="Enter last name">
+                            <input name="lname" type="text" class="form-control" placeholder="Enter last name">
                         </div>
-                        <div class="form-group col-12 col-sm-12 col-md-6">
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-5">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Enter email">
+                            <input name="email" type="email" class="form-control" placeholder="Enter email">
                         </div>
-                        <div class="form-group col-12 col-sm-12 col-md-6">
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-5">
                             <label>Password</label>
-                            <input type="text" class="form-control" placeholder="Enter password">
+                            <input name="password" type="text" class="form-control" placeholder="Enter password">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" id="addAdminBtn" class="btn btn-primary">Add</button>
                 </form>
             </div>
         </div>
         <br>
         <hr>
-        <div class="row m-2 mt-5">
-            <div class="col">
+        <div class="row">
+            <div class="col mx-5">
                 <h2 class="text-success">All Admin</h2>
-                <h3>Average score N/A</h3>
-                <a href="tests.php" class="btn btn-primary">Go To Tests</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                        if(mysqli_num_rows($result)>0){
+                            $count = 0;
+                            while($row = mysqli_fetch_assoc($result)){
+                                $count ++;
+                                ?>
+                                   <tr>
+                                        <th><?php echo $count ?></th>
+                                        <td><?php echo $row['firstname'] ?></td>
+                                        <td><?php echo $row['lastname'] ?></td>
+                                        <td><?php echo $row['email'] ?></td>
+                                    </tr>
+                                <?php
+                            }
+                        }
+
+                        ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    const form = document.querySelector("#addAdminForm"),
+        addAdminBtn = form.querySelector("#addAdminBtn"),
+        errorText = form.querySelector(".error-text");
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+    };
+
+    addAdminBtn.onclick = () => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "utils/addAdmin.php", true);
+        xhr.onload = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    let data = xhr.response;
+                    console.log("Data", data);
+                    if (data === "success") {
+                        alert("Admin added")
+                        location.href = "admins.php";
+                    } else {
+                        alert(data);
+                    }
+                }
+            }
+        };
+        let formData = new FormData(form);
+        xhr.send(formData);
+    };
+</script>
 </body>
 
 </html>

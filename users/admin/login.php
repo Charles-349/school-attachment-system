@@ -1,11 +1,11 @@
 <?php include "includes/header.php" ?>
 <div class="form login">
     <form action="#" method="POST" enctype="multipart/form-data">
-        <h3 class="my-2 mb-3">Student Login</h3>
+        <h3 class="my-2 mb-3">Admin Login</h3>
         <div class="error-text"></div>
         <div class="field input">
-            <label for="">Registration Number</label>
-            <input type="text" name="regno" placeholder="Enter your reg number" />
+            <label for="">Email</label>
+            <input type="email" name="email" placeholder="Enter your email" />
         </div>
         <div class="field input">
             <label for="">Password</label>
@@ -14,10 +14,6 @@
         </div>
         <div class="field button">
             <input type="submit" name="" value="Continue" />
-        </div>
-        <div class="link"><a href="#">Forgot password?</a></div>
-        <div class="button2">
-            <a href="register.php">Register Now</a>
         </div>
     </form>
 </div>
