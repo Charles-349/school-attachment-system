@@ -102,10 +102,10 @@ include "myFunctions.php";
                             <tr>
                                 <td>Thursday</td>
                                 <td>
-                                    <textarea class="form-control" name="thurdayjob" id="" cols="30" rows="4"><?php echo $thurdayjob; ?></textarea>
+                                    <textarea class="form-control" name="thursdayjob" id="" cols="30" rows="4"><?php echo $thursdayjob; ?></textarea>
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="thurdayskill" id="" cols="30" rows="4"><?php echo $thurdayskill; ?></textarea>
+                                    <textarea class="form-control" name="thursdayskill" id="" cols="30" rows="4"><?php echo $thursdayskill; ?></textarea>
                                 </td>
                             </tr>
                             <tr>

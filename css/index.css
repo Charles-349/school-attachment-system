@@ -9,27 +9,28 @@
 body {
   min-height: 100vh;
   background: #f7f7f7;
-  background: #944fdd;
 }
 .main-wrapper {
   width: 100%;
+  background-image: url("./../dkut.jpeg");
+  background-size: cover;
   border-radius: 16px;
   min-height: 100vh;
+  background-color: rgba(0, 0, 0, .9);
 }
 
 @media screen and (min-width: 800px) {
-  .main-wrapper{
-padding-left: 10vw;
-padding-right: 10vw;
+  .main-wrapper {
+    /* padding-left: 10vw;
+    padding-right: 10vw; */
   }
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
-  box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
-    0 32px 64px -48px rgba(0, 0, 0, 0.5);
+  padding: 20px 0px;
+  background-color: #91d343;
 }
 
 header .logo {
@@ -58,7 +59,7 @@ header .nav a:hover {
   height: 80vh;
 }
 
-.form{
+.form {
   background-color: #fff;
   padding: 50px 20px;
 }

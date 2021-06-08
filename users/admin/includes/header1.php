@@ -17,7 +17,7 @@
   <div class="main-wrapper">
     <header>
       <div class="logo">
-        <h3><a style="color: #fff;" href="../../choose.html">SAS</a></h3>
+        <h3><a style="color: #fff;" href="../../index.php">SAS</a></h3>
       </div>
       <div class="nav">
         <a href="index.php">About us</a>
