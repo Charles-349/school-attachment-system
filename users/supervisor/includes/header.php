@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['ssupid'])) {
+  header("location: login.php");
+}
+$ssupid  = $_SESSION['ssupid'];
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -19,10 +27,9 @@
         <!-- <h3>SAS</h3> -->
         <img src="images/logo.png" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px">
       </div>
-      <h2 class="text-white" >Student Attachment System</h2>
+      <h2 class="text-white">Student Attachment System</h2>
       <div class="nav">
-        <?php if (isset($_SESSION['studentid'])) : ?>
-          <a href="logout.php" class="btn" style="background-color: orange;">Logout</a>
-        <?php endif ?>
+        <a href="logout.php" class="btn" style="background-color: orange;">Logout</a>
+
       </div>
     </header>

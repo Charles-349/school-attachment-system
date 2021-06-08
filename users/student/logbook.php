@@ -12,6 +12,7 @@ if (!isset($_GET['week'])) {
 $sid  = $_SESSION['studentid'];
 $week = $_GET['week'];
 
+$checkresult  = mysqli_query($conn, "SELECT * FROM `tbl_registered_attachments` where studentid='$sid'");
 $logresult  = mysqli_query($conn, "SELECT * FROM `tbl_logbook` where studentid='$sid' and week='$week' ");
 
 $mondayjob = "";
@@ -49,80 +50,86 @@ include "myFunctions.php";
     <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
         <h4 class="text-success my-3 ml-4">Log Book</h4>
         <hr>
-        <div class="row m-2">
-            <div class="col-12" style="display:flex; justify-content:space-between;">
-                <button id="prevBtn" class="btn btn-outline-success">Previous</button>
-                <button id="nextBtn" class="btn btn-outline-success">Next</button>
+        <?php if (mysqli_num_rows($checkresult) < 1) : ?>
+            <div class="row m-2">
+                <h5>You cannot access the logbook. The form is only availabe for students in attachment</h5>
             </div>
-        </div>
-        <form action="#" id="logForm" class="row m-2">
-            <div class="col-12">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Day</th>
-                            <th scope="col">Job Assigned To Student</th>
-                            <th scope="col">Special Skills Acquired</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>
-                                <textarea class="form-control" name="mondayjob" id="" cols="30" rows="4"><?php echo $mondayjob; ?></textarea>
-                            </td>
-                            <td>
-                                <textarea class="form-control" name="mondayskill" id="" cols="30" rows="4"><?php echo $mondayskill; ?></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>
-                                <textarea class="form-control" name="tuesdayjob" id="" cols="30" rows="4"><?php echo $tuesdayjob; ?></textarea>
-                            </td>
-                            <td>
-                                <textarea class="form-control" name="tuesdayskill" id="" cols="30" rows="4"><?php echo $tuesdayskill; ?></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>
-                                <textarea class="form-control" name="wednesdayjob" id="" cols="30" rows="4"><?php echo $wednesdayjob; ?></textarea>
-                            </td>
-                            <td>
-                                <textarea class="form-control" name="wednesdayskill" id="" cols="30" rows="4"><?php echo $wednesdayskill; ?></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>
-                                <textarea class="form-control" name="thurdayjob" id="" cols="30" rows="4"><?php echo $thurdayjob; ?></textarea>
-                            </td>
-                            <td>
-                                <textarea class="form-control" name="thurdayskill" id="" cols="30" rows="4"><?php echo $thurdayskill; ?></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>
-                                <textarea class="form-control" name="fridayjob" id="" cols="30" rows="4"><?php echo $fridayjob; ?></textarea>
-                            </td>
-                            <td>
-                                <textarea class="form-control" name="fridayskill" id="" cols="30" rows="4"><?php echo $fridayskill; ?></textarea>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <?php else : ?>
+            <div class="row m-2">
+                <div class="col-12" style="display:flex; justify-content:space-between;">
+                    <button id="prevBtn" class="btn btn-outline-success">Previous</button>
+                    <button id="nextBtn" class="btn btn-outline-success">Next</button>
+                </div>
             </div>
-            <div class="col-12 mb-5">
-                <button id="updateBtn" <?php if (mysqli_num_rows($logresult) < 1) {
-                                            echo "disabled" . " " . "style='cursor: not-allowed;'";
-                                        } ?> type="submit" class="btn btn-primary btn-lg">Update</button>
-                <button id="saveBtn" <?php if (mysqli_num_rows($logresult) > 0) {
-                                            echo "disabled" . " " . "style='cursor: not-allowed;'";
-                                        } ?> type="submit" class="btn btn-success btn-lg">Save</button>
-            </div>
-        </form>
+            <form action="#" id="logForm" class="row m-2">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Day</th>
+                                <th scope="col">Job Assigned To Student</th>
+                                <th scope="col">Special Skills Acquired</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td>
+                                    <textarea class="form-control" name="mondayjob" id="" cols="30" rows="4"><?php echo $mondayjob; ?></textarea>
+                                </td>
+                                <td>
+                                    <textarea class="form-control" name="mondayskill" id="" cols="30" rows="4"><?php echo $mondayskill; ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>
+                                    <textarea class="form-control" name="tuesdayjob" id="" cols="30" rows="4"><?php echo $tuesdayjob; ?></textarea>
+                                </td>
+                                <td>
+                                    <textarea class="form-control" name="tuesdayskill" id="" cols="30" rows="4"><?php echo $tuesdayskill; ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>
+                                    <textarea class="form-control" name="wednesdayjob" id="" cols="30" rows="4"><?php echo $wednesdayjob; ?></textarea>
+                                </td>
+                                <td>
+                                    <textarea class="form-control" name="wednesdayskill" id="" cols="30" rows="4"><?php echo $wednesdayskill; ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>
+                                    <textarea class="form-control" name="thurdayjob" id="" cols="30" rows="4"><?php echo $thurdayjob; ?></textarea>
+                                </td>
+                                <td>
+                                    <textarea class="form-control" name="thurdayskill" id="" cols="30" rows="4"><?php echo $thurdayskill; ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>
+                                    <textarea class="form-control" name="fridayjob" id="" cols="30" rows="4"><?php echo $fridayjob; ?></textarea>
+                                </td>
+                                <td>
+                                    <textarea class="form-control" name="fridayskill" id="" cols="30" rows="4"><?php echo $fridayskill; ?></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 mb-5">
+                    <button id="updateBtn" <?php if (mysqli_num_rows($logresult) < 1) {
+                                                echo "disabled" . " " . "style='cursor: not-allowed;'";
+                                            } ?> type="submit" class="btn btn-primary btn-lg">Update</button>
+                    <button id="saveBtn" <?php if (mysqli_num_rows($logresult) > 0) {
+                                                echo "disabled" . " " . "style='cursor: not-allowed;'";
+                                            } ?> type="submit" class="btn btn-success btn-lg">Save</button>
+                </div>
+            </form>
+        <?php endif ?>
     </div>
 </section>
 
