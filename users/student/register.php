@@ -64,7 +64,7 @@
                     let data = xhr.response;
                     console.log("Data", data);
                     if (data === "success") {
-                        location.href = "index.php";
+                        location.href = "login.php";
                         errorText.style.display = "none";
                     } else {
                         errorText.style.display = "block";

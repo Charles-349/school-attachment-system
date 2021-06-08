@@ -25,7 +25,7 @@ include "includes/header.php";
             <div class="card col-6 col-sm-6 col-md-6 col-lg-3 m-1">
                 <div class="card-body">
                     <h5 class="text-center">Registered for Attachment</h5>
-                    <h1 class="text-center text-primary"><?php echo getNumOfStudents() ?></h1>
+                    <h1 class="text-center text-primary"><?php echo getNumOfStudentsRegistered() ?></h1>
                 </div>
             </div>
             <div class="card col-6 col-sm-6 col-md-6 col-lg-3 m-1">

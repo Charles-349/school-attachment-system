@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -17,10 +16,9 @@
   <div class="main-wrapper">
     <header>
       <div class="logo">
-        <h3><a style="color: #fff;" href="../../index.php">SAS</a></h3>
+        <img src="images/logo.png" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px">
       </div>
+      <h3 class="text-white">Student Attachment System</h3>
       <div class="nav">
-        <a href="index.php">About us</a>
-        <a href="index.php">Contact us</a>
       </div>
     </header>

@@ -18,10 +18,8 @@
       <div class="logo">
       <img src="images/logo.png" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px">
       </div>
+      <h2 class="text-white">Student Attachment System</h2>
       <div class="nav">
-        <a href="index.php">About us</a>
-        <a href="index.php">Contact us</a>
-
         <?php if (isset($_SESSION['studentid'])) : ?>
           <a href="logout.php" class="btn btn-primary">Logout</a>
         <?php endif ?>

@@ -19,7 +19,7 @@ include "myFunctions.php";
             <div class="col">
                 <h2 class="text-success"><?php echo testsDone($sid) ?> Test Done</h2>
                 <?php if (testsDone($sid) == 3) : ?>
-                <h3 style="text-transform: capitalize;">You Did Best On <span class="text-primary"><?php echo getBestScored($sid) ?></span> </h3>
+                <h3 style="text-transform: capitalize;">You are recomended for attachment on <span class="text-primary"><?php echo getBestScored($sid) ?></span> field</h3>
                 <!-- <h3>Your Score <?php echo calculateScore(getBestScored($sid), $sid) ?></h3> -->
                 <?php endif ?>
                 <?php if (testsDone($sid) == 0) : ?>
@@ -30,7 +30,7 @@ include "myFunctions.php";
                 <hr>
                 <h2 class="text-success">Attachment Status</h2>
                 <?php if (checkIfRegisteredAttachment($sid) == "true") : ?>
-                    <h5>You have added attachment details</h5>
+                    <h5>You have already added attachment details</h5>
                     <a href="registerattachment.php" class="btn btn-primary">View Details</a>
                 <?php else: ?>
                     <h5>No attachment details have been added</h5>

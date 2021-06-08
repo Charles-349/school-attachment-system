@@ -79,6 +79,14 @@ function getAllStudents()
     }
 }
 
+function getNumOfStudentsRegistered()
+{
+    include "includes/config.php";
+    $result = mysqli_query($conn, "SELECT * from tbl_registered_attachments");
+
+    return mysqli_num_rows($result);
+}
+
 function getAssignedAdmins()
 {
     include "includes/config.php";

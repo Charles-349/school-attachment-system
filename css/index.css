@@ -12,11 +12,11 @@ body {
 }
 .main-wrapper {
   width: 100%;
-  background-image: url("./../dkut.jpeg");
+  background-image: url("./../img1.png");
   background-size: cover;
   border-radius: 16px;
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 @media screen and (min-width: 800px) {
@@ -29,8 +29,8 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0px;
-  background-color: #91d343;
+  padding: 20px 40px;
+  background-color: #277510;
 }
 
 header .logo {
@@ -48,15 +48,23 @@ header .nav a {
 
 header .nav a:hover {
   text-decoration: none;
-  color: #91d343;
+  color: #277510;
 }
 
 .main {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   height: 80vh;
+}
+.main div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  background-color: rgba(46, 139, 87, 0.8);
 }
 
 .form {
