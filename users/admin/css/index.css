@@ -9,7 +9,7 @@
 body {
   min-height: 100vh;
   background: #f7f7f7;
-  background: #944fdd;
+  overflow-x: hidden;
 }
 .main {
   width: 100%;
@@ -23,7 +23,7 @@ header {
   padding: 20px 40px;
   box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
-  background-color: green;
+  background-color: #277510;
 }
 
 header .logo {
@@ -65,7 +65,7 @@ header .nav a:hover {
 
 .sidebar{
   border-right: 5px solid #eee;
-  background-color: #27a510;
+  background-color: #277510;
   padding: 0px;
 }
 .side-nav{

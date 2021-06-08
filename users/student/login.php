@@ -23,7 +23,7 @@
 </div>
 </div>
 
-<script src="js/bootstrap.min.js"></script>
+<script src="js/password-show-hide.js"></script>
 <script>
     const form = document.querySelector(".login form"),
         continueBtn = form.querySelector(".button input"),

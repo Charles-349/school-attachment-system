@@ -16,6 +16,24 @@
             <input type="text" name="regno" placeholder="Enter your reg number" />
         </div>
         <div class="field input">
+            <label for="">Course Name</label>
+            <select name="course" >
+                <option>Select Course</option>
+                <option value="BBIT">BBIT</option>
+                <option value="IT">IT</option>
+            </select>
+        </div>
+        <div class="field input">
+            <label for="">Year of Study</label>
+            <select name="year" >
+                <option>Select Year</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+            </select>
+        </div>
+        <div class="field input">
             <label for="">Password</label>
             <input type="password" name="password" placeholder="Enter your password" />
             <i class="fas fa-eye"></i>
@@ -27,7 +45,7 @@
     </form>
 </div>
 </div>
-<script src="js/bootstrap.min.js"></script>
+<script src="js/password-show-hide.js"></script>
 <script>
     const form = document.querySelector(".signup form"),
         continueBtn = form.querySelector(".button input"),

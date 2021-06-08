@@ -6,7 +6,7 @@ include "includes/header.php";
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 
-    <div class="col col-sm-12 col-md-8 col-lg-9 main-content">
+    <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
         <h4 class="text-success my-5 ml-2">School Supervisors</h4>
         <hr>
         <div class="row">

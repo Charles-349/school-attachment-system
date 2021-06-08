@@ -12,7 +12,7 @@ include "myFunctions.php";
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 
-    <div class="col col-sm-12 col-md-8 col-lg-9 main-content">
+    <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
         <h4 class="text-success my-5 ml-2">Main Dashboard</h4>
         <hr>
         <div class="row m-2">
@@ -24,6 +24,17 @@ include "myFunctions.php";
                 <?php endif ?>
                 <?php if (testsDone($sid) == 0) : ?>
                     <a href="tests.php" class="btn btn-primary">Go To Tests</a>
+                <?php endif ?>
+            </div>
+            <div class="col col-12">
+                <hr>
+                <h2 class="text-success">Attachment Status</h2>
+                <?php if (checkIfRegisteredAttachment($sid) == "true") : ?>
+                    <h5>You have added attachment details</h5>
+                    <a href="registerattachment.php" class="btn btn-primary">View Details</a>
+                <?php else: ?>
+                    <h5>No attachment details have been added</h5>
+                    <a href="registerattachment.php" class="btn btn-primary">Add Details</a>
                 <?php endif ?>
             </div>
         </div>

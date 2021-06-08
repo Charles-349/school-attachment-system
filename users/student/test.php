@@ -30,7 +30,7 @@ $answerresult = mysqli_query($conn, "select * from tbl_answers where test = '$te
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 
-    <div class="col col-sm-12 col-md-8 col-lg-9 main-content">
+    <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
         <h4 style="text-transform: uppercase;" class="text-success my-5 ml-2">Tests - <?php echo $test; ?></h4>
         <div class="row ml-2">
             <div class="card m-2" style="width: 50rem;">

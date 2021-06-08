@@ -15,7 +15,7 @@ $checkresult = mysqli_query($conn, "SELECT * FROM tbl_registered_attachments whe
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 
-    <div class="col col-sm-12 col-md-8 col-lg-9 main-content">
+    <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
         <h4 class="text-success my-5 ml-2">Register Attachment Details</h4>
         <div class="row m-2">
             <?php if (mysqli_num_rows($checkresult) < 1) : ?>
@@ -57,10 +57,9 @@ $checkresult = mysqli_query($conn, "SELECT * FROM tbl_registered_attachments whe
                 </div>
             <?php else : ?>
                 <div class="col col-12 col-md-12 col-lg-8">
-                    <h5>You have Already registered for attachement in company shown below</h5>
+                    <h5>You have Already registered for an attachement in the company shown below</h5>
                     <br>
                     <table class="table">
-                        <thead>
                         <tbody>
                             <?php getAttachmentDetails($sid); ?>
                         </tbody>

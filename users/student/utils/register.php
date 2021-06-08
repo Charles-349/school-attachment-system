@@ -5,8 +5,10 @@
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);
     $regno = mysqli_real_escape_string($conn, $_POST['regno']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $course = mysqli_real_escape_string($conn, $_POST['course']);
+    $year = mysqli_real_escape_string($conn, $_POST['year']);
     
-    if(!empty($fname) && !empty($lname) && !empty($regno) && !empty($password)){
+    if(!empty($fname) && !empty($lname) && !empty($regno) && !empty($password)&& !empty($course) && !empty($year)){
         $passlen = number_format(strlen($password));
         if($passlen >= 8){
             $sql = mysqli_query($conn, "SELECT * FROM students WHERE regno = '{$regno}'");
@@ -15,8 +17,8 @@
             }else{
                 $ran_id = rand(time(), 100000000);
                 $encrypt_pass = md5($password);
-                $insert_query = mysqli_query($conn, "INSERT INTO students (uniqueid, fname, lname, regno, password)
-                                VALUES ('{$ran_id}', '{$fname}', '{$lname}', '{$regno}', '{$encrypt_pass}')");
+                $insert_query = mysqli_query($conn, "INSERT INTO students (uniqueid, fname, lname, regno, password, course, year)
+                                VALUES ('{$ran_id}', '{$fname}', '{$lname}', '{$regno}', '{$encrypt_pass}', '{$course}', '{$year}')");
                 if($insert_query){
                     $select_sql2 = mysqli_query($conn, "SELECT * FROM students WHERE regno = '{$regno}'");
                     if(mysqli_num_rows($select_sql2) > 0){

@@ -1,5 +1,17 @@
-<div class="col col-sm-12 col-md-4 col-lg-3 sidebar py-5">
-    <h4 class="text-center">Welcome @ Martin</h4>
+<?php
+
+// session_start();
+include "config.php";
+$aid  = $_SESSION['adminid'];
+$result = mysqli_query($conn, "SELECT * FROM admins where uniqueid = '$aid' ") or die($conn->error);
+
+$array = mysqli_fetch_assoc($result);
+
+?>
+<div class="col col-sm-12 col-md-4 col-lg-2 sidebar py-5">
+    <h5 class="text-center text-white">
+        <span style="color: orange;font-style: italic;font-size: 30px;"> Welcome </span><?php echo $array['firstname'] . " " . $array['lastname']  ?>
+    </h5>
     <hr>
     <div class="side-nav py-2">
         <a href="index.php" class="side-nav-item">

@@ -7,7 +7,7 @@ include "includes/header.php";
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 
-    <div class="col col-sm-12 col-md-8 col-lg-9 main-content">
+    <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
         <h4 class="text-success my-5 ml-2">Main Dashboard</h4>
         <div class="row ml-2">
             <div class="card col col-sm-6 col-md-6 col-lg-3 m-1">
