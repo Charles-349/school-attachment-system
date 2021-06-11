@@ -58,6 +58,7 @@ include "myFunctions.php";
             <div class="row m-2">
                 <div class="col-12" style="display:flex; justify-content:space-between;">
                     <button id="prevBtn" class="btn btn-outline-success">Previous</button>
+                    <h4 class="text-success" style="text-decoration: underline;">Week <?php echo $week; ?></h4>
                     <button id="nextBtn" class="btn btn-outline-success">Next</button>
                 </div>
             </div>
@@ -204,6 +205,4 @@ include "myFunctions.php";
     };
 </script>
 
-</body>
-
-</html>
+<?php include "includes/footer.php"; ?>

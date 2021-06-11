@@ -15,14 +15,15 @@
 <body>
   <div class="main-wrapper">
     <header class="py-3">
+      <div class="menu-icon"><i class="fa fa-bars"></i></div>
       <div class="logo">
-        <!-- <h3>SAS</h3> -->
         <img src="images/logo.png" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px">
       </div>
-      <h2 class="text-white" >Student Attachment System</h2>
+      <h3 class="text-white">Student Attachment System</h3>
       <div class="nav">
         <?php if (isset($_SESSION['studentid'])) : ?>
           <a href="logout.php" class="btn" style="background-color: orange;">Logout</a>
         <?php endif ?>
       </div>
     </header>
+    

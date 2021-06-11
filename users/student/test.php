@@ -90,6 +90,4 @@ $answerresult = mysqli_query($conn, "select * from tbl_answers where test = '$te
         xhr.send(formData);
     };
 </script>
-</body>
-
-</html>
+<?php include "includes/footer.php"; ?>

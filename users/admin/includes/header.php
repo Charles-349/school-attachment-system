@@ -24,6 +24,7 @@ $adminid  = $_SESSION['adminid'];
 <body>
   <div class="main-wrapper">
     <header class="py-2">
+      <div class="menu-icon"><i class="fa fa-bars"></i></div>
       <div class="logo">
         <!-- <h3>SAS</h3> -->
         <img src="images/logo.png" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px">

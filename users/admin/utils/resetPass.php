@@ -11,11 +11,18 @@ if (!isset($_GET['studentid'])) {
     if (!empty($password) && !empty($studentid)) {
         $passlen = number_format(strlen($password));
         if ($passlen >= 8) {
+            $encpass = md5($password);
+
             $sql = mysqli_query($conn, "SELECT * FROM students WHERE uniqueid = '{$studentid}'");
             if (mysqli_num_rows($sql) < 0) {
                 echo "Student does not exist!";
             } else {
-                
+                $res = $conn->query("UPDATE students SET password='$encpass' where uniqueid='$studentid'");
+                if($res){
+                    echo "success";
+                }else{
+                    echo "Failed";
+                }
             }
         } else {
             echo "Password should be min of 8 characters";

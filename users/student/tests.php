@@ -56,6 +56,4 @@ $sid  = $_SESSION['studentid'];
         </div>
     </div>
 </section>
-</body>
-
-</html>
+<?php include "includes/footer.php"; ?>

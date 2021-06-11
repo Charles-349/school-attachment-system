@@ -107,3 +107,49 @@ header .nav a:hover {
 .addAdmin form{
   margin: 0px;
 }
+
+.menu-icon {
+  position: absolute;
+  top: 25px;
+  left: 20px;
+  display: none;
+  cursor: pointer;
+}
+.menu-icon i {
+  font-size: 25px;
+  color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+  .main,
+  header {
+    /* padding-left: 10vw;
+    padding-right: 10vw; */
+  }
+  header h3 {
+    display: none;
+  }
+  .logo img {
+    width: 50px;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    z-index: 100;
+    margin-top: 10vh;
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .main-content {
+    position: relative;
+  }
+  .menu-icon {
+    display: block;
+  }
+}

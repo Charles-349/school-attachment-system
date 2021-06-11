@@ -32,6 +32,4 @@ $test = $_GET['test'];
         </div>
     </div>
 </section>
-</body>
-
-</html>
+<?php include "includes/footer.php"; ?>
