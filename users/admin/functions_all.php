@@ -71,6 +71,7 @@ function getAllStudents()
                 <td><?php echo $row['regno'] ?></td>
                 <td><?php echo $row['course'] ?></td>
                 <td><?php echo $row['year'] ?></td>
+                <td><a href="passreset.php?studentid=<?php echo $row['uniqueid'] ?>" class="btn btn-success">Reset</a></td>
             </tr>
         <?php
         }
@@ -122,6 +123,7 @@ function getAllAttachments()
             <tr>
                 <th><?php echo $count ?></th>
                 <td><?php echo $row['title'] ?></td>
+                <td><?php echo $row['cname'] ?></td>
                 <td><?php echo $row['category'] ?></td>
                 <td><?php echo $row['location'] ?></td>
                 <td><?php echo $row['startdate'] ?></td>

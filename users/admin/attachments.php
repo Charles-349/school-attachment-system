@@ -16,6 +16,7 @@ include "includes/header.php";
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Title</th>
+                            <th scope="col">Company Name</th>
                             <th scope="col">Category</th>
                             <th scope="col">Location</th>
                             <th scope="col">Start Date</th>

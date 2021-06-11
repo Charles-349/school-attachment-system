@@ -52,6 +52,7 @@ $year = $_GET['year'];
                             <th scope="col">Registration Number</th>
                             <th scope="col">Course</th>
                             <th scope="col">Year</th>
+                            <th scope="col">Password Reset</th>
                         </tr>
                     </thead>
                     <tbody>
