@@ -16,8 +16,6 @@ $thursdayskill = mysqli_real_escape_string($conn, $_POST['thursdayskill']);
 $fridayjob = mysqli_real_escape_string($conn, $_POST['fridayjob']);
 $fridayskill = mysqli_real_escape_string($conn, $_POST['fridayskill']);
 
-// $sql = "UPDATE `tbl_logbook` SET `uniqueid`='[value-2]',`week`='[value-3]',`mondayjob`='[value-4]',`mondayskill`='[value-5]',`tuesdayjob`='[value-6]',`tuesdayskill`='[value-7]',`wednesdayjob`='[value-8]',`wednesdayskill`='[value-9]',`thursdayjob`='[value-10]',`thursdayskill`='[value-11]',`fridayjob`='[value-12]',`fridayskill`='[value-13]',`studentid`='[value-14]' WHERE 1";
-
 
 $ran_id = rand(time(), 100000000);
 $insert_query = mysqli_query($conn, "INSERT INTO tbl_logbook (`uniqueid`,`week`,`mondayjob`, `mondayskill`, `tuesdayjob`, `tuesdayskill`, `wednesdayjob`, `wednesdayskill`, `thursdayjob`, `thursdayskill`, `fridayjob`, `fridayskill`, `studentid`)

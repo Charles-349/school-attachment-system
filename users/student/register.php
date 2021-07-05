@@ -18,7 +18,7 @@
         <div class="field input">
             <label for="">Course Name</label>
             <select name="course" >
-                <option>Select Course</option>
+                <optipreg_matchon>Select Course</option>
                 <option value="BBIT">BBIT</option>
                 <option value="IT">IT</option>
             </select>

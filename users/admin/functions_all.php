@@ -76,7 +76,42 @@ function getAllStudents()
         <?php
         }
     } else {
-        echo "No admin";
+        echo "<tr><td>No student</td></tr>";
+    }
+}
+function getFilteredStudents($year, $course){
+    include "includes/config.php";
+
+    $query = "";
+    if($year==""){
+        $query = "SELECT * from students WHERE course = '$course'";
+    }else if($course==""){
+        $query = "SELECT * from students WHERE year = '$year'";
+    }else{
+        $query = "SELECT * from students WHERE course = '$course' AND year = '$year' ";
+
+    }
+
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        $count = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $count++;
+        ?>
+            <tr>
+                <th><?php echo $count ?></th>
+                <td><?php echo $row['fname'] ?></td>
+                <td><?php echo $row['lname'] ?></td>
+                <td><?php echo $row['regno'] ?></td>
+                <td><?php echo $row['course'] ?></td>
+                <td><?php echo $row['year'] ?></td>
+                <td><a href="passreset.php?studentid=<?php echo $row['uniqueid'] ?>" class="btn btn-success">Reset</a></td>
+            </tr>
+        <?php
+        }
+    } else {
+        echo "<tr><td>No student</td></tr>";
     }
 }
 
@@ -101,6 +136,7 @@ function getAssignedAdmins()
                 <td><?php echo $row['fname'] . " " . $row['lname']; ?></td>
                 <td><?php echo $row['regno'] ?></td>
                 <td><?php echo $row['supervisor'] ?></td>
+                <td><?php echo $row['csupervisor'] ?></td>
             </tr>
         <?php
         }

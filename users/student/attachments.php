@@ -36,7 +36,7 @@ include "myFunctions.php";
                         </tr>
                     </thead>
                     <tbody>
-                        <?php echo getRecommendedAttachments(getBestScored($sid), $sid) ?>
+                        <?php echo getRecommendedAttachments($sid) ?>
                     </tbody>
                 </table>
                 <hr>
@@ -56,7 +56,10 @@ include "myFunctions.php";
                         </tr>
                     </thead>
                     <tbody>
-                        <?php echo getAllAttachments(getBestScored($sid), $sid) ?>
+                        <?php 
+                        echo getAllAttachments($sid) 
+                        
+                        ?>
                     </tbody>
                 </table>
                 <hr>

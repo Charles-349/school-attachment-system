@@ -13,32 +13,20 @@ $year = $_GET['year'];
     <?php include "includes/sidebar.php"; ?>
 
     <div class="col col-sm-12 col-md-8 col-lg-10 main-content py-4 px-5">
-
-        <form id="filterForm" action="#" method="post">
-            <div class="row" style="align-items: center;">
-                <div class="col col-12">
-                    <h2 class="text-success">Filters</h2>
-                </div>
-                <div class="col col-1">
-                    <select value="<?php echo $course ?>" id="courseInput" name="year">
-                        <option value="all" selected=<?php if($course == ""){ echo "true";}else{echo "false";} ?>>All Courses</option>
-                        <option value="BBIT" selected=<?php if($course == "BBIT"){ echo "true";}else{echo "false";} ?>>BBIT</option>
-                        <option value="IT" selected="false">IT</option>
-                    </select>
-                </div>
-                <div class="col col-1">
-                    <select value="<?php echo $year ?>" id="yearInput" name="year">
-                        <option value="all">All Years</option>
-                        <option value="1">1st Year</option>
-                        <option value="2">2nd Year</option>
-                        <option value="3">3rd Year</option>
-                        <option value="4">4th Year</option>
-                    </select>
-                </div>
-                <div class="col col-1">
-                    <input id="filterButton" type="submit" class="form-control" value="Filter">
-                </div>
-            </div>
+        <form class="mt-2 row" id="filterForm">
+            <select name="" id="yearInput" class="form-control col-3 col-lg-2">
+                <option value="all">Select Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <select name="" id="courseInput" class="form-control col-3 col-lg-2">
+                <option value="all">Select Course</option>
+                <option value="IT">IT</option>
+                <option value="BBIT">BBIT</option>
+            </select>
+            <button id="filterButton" class="btn btn-outline-success col col-2 col-lg-2">Apply</button>
         </form>
         <div class="row mt-3">
             <div class="col">
@@ -56,7 +44,13 @@ $year = $_GET['year'];
                         </tr>
                     </thead>
                     <tbody>
-                        <?php getAllStudents(); ?>
+                        <?php
+                        if (!isset($course) && !isset($year)) {
+                            getAllStudents();
+                        }else{
+                            getFilteredStudents($year, $course);
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -78,13 +72,13 @@ $year = $_GET['year'];
         const course = courseInput.value;
         const year = yearInput.value;
 
-        if(course === "all" && year === "all"){
+        if (course === "all" && year === "all") {
             location.href = "students.php";
-        }else if(course === "all" && year != "all"){
+        } else if (course === "all" && year != "all") {
             location.href = `students.php?year=${year}`;
-        }else if(course != "all" && year == "all"){
+        } else if (course != "all" && year == "all") {
             location.href = `students.php?course=${course}`;
-        }else{
+        } else {
             location.href = `students.php?course=${course}&year=${year}`;
         }
     };

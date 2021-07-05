@@ -35,6 +35,7 @@ function calculateScore($test, $sid)
             }
         }
     }
+
     return $score;
 }
 
@@ -48,10 +49,16 @@ function getBestScored($sid)
         return "hardware";
     } else if ($softwareScore > $hardwareScore && $softwareScore > $networkingScore) {
         return "software";
-    } else if ($networkingScore > $hardwareScore && $networkingScore > $softwareScore){
+    } else if ($networkingScore > $hardwareScore && $networkingScore > $softwareScore) {
         return "networking";
-    }else{
-        return "";
+    } else if ($networkingScore > $hardwareScore && $networkingScore == $softwareScore) {
+        return "networking and software";
+    } else if ($hardwareScore > $networkingScore && $hardwareScore == $softwareScore) {
+        return "hardware and software";
+    } else if ($hardwareScore > $softwareScore && $hardwareScore == $networkingScore) {
+        return "hardware and networking";
+    } else {
+        return "All";
     }
 }
 
@@ -97,10 +104,24 @@ function getAttachmentDetails($sid)
     }
 }
 
-function getRecommendedAttachments($test, $sid)
+function getRecommendedAttachments($sid)
 {
     include "includes/config.php";
-    $checkresult = mysqli_query($conn, "SELECT * FROM tbl_attachments where category = '$test'");
+
+    $test =  getBestScored($sid);
+    $query = "";
+    if ($test == "hardware and networking") {
+        $query = "SELECT * FROM tbl_attachments where category = 'hardware' OR category ='networking'";
+    } else if ($test == "networking and software") {
+        $query = "SELECT * FROM tbl_attachments where category = 'software' OR category ='networking'";
+    } else if ($test == "hardware and software") {
+        $query = "SELECT * FROM tbl_attachments where category = 'hardware' OR category ='software'";
+    } else {
+        $query = "SELECT * FROM tbl_attachments where category = '$test'";
+    }
+
+    $checkresult = mysqli_query($conn, $query);
+
 
 
 
@@ -123,10 +144,24 @@ function getRecommendedAttachments($test, $sid)
         echo "<tr><td colspan='7'> No Attachment in this area</td></tr>";
     }
 }
-function getAllAttachments($test, $sid)
+function getAllAttachments($sid)
 {
     include "includes/config.php";
-    $checkresult = mysqli_query($conn, "SELECT * FROM tbl_attachments where category != '$test'");
+    $test =  getBestScored($sid);
+    $query = "";
+    if ($test == "hardware and networking") {
+        $query = "SELECT * FROM tbl_attachments where category != 'hardware' AND category !='networking'";
+    } else if ($test == "networking and software") {
+        $query = "SELECT * FROM tbl_attachments where category != 'software' AND category !='networking'";
+    } else if ($test == "hardware and software") {
+        $query = "SELECT * FROM tbl_attachments where category != 'hardware' AND category !='software'";
+    } else if ($test == "All") {
+        $query = "SELECT * FROM tbl_attachments";
+    } else {
+        $query = "SELECT * FROM tbl_attachments where category !='$test' ";
+    }
+
+    $checkresult = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($checkresult) > 0) {
         $count = 0;

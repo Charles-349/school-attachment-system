@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 08, 2021 at 04:30 PM
+-- Generation Time: Jun 18, 2021 at 05:55 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -106,7 +106,8 @@ CREATE TABLE `students` (
   `lname` varchar(255) NOT NULL,
   `regno` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `supervisor` varchar(200) NOT NULL,
+  `supervisor` varchar(200) NOT NULL DEFAULT '',
+  `csupervisor` varchar(200) NOT NULL DEFAULT '',
   `course` varchar(200) NOT NULL,
   `year` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -115,14 +116,15 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `uniqueid`, `fname`, `lname`, `regno`, `password`, `supervisor`, `course`, `year`) VALUES
-(1, '780697576', 'John', 'Maina', 'C027-01-0333/2018', '25d55ad283aa400af464c76d713c07ad', 'alanjackson@gmail.com', 'IT', 3),
-(2, '780696465', 'Martin', 'Mwangi', 'C026-01-0314/2018', '25d55ad283aa400af464c76d713c07ad', '', 'BBIT', 3),
-(3, '485523257', 'Isaac', 'Kinyili', 'C025-01-1029/2018', '25d55ad283aa400af464c76d713c07ad', '', 'BBIT', 3),
-(4, '344242951', 'Murimi', 'Allan', 'C027-01-1029/2019', '25d55ad283aa400af464c76d713c07ad', 'janembele@gmail.com', 'IT', 3),
-(5, '633681579', 'James', 'Maina', 'C025-01-1000/2018', '25d55ad283aa400af464c76d713c07ad', 'kelvinkanyua@gmail.com', 'IT', 3),
-(6, '953319685', 'Allaxander', 'Kamau', 'C055-03-3434/2019', '25d55ad283aa400af464c76d713c07ad', '', 'IT', 2),
-(7, '1617611936', 'Ann', 'Njeri', 'C025-01-0023/2019', '25d55ad283aa400af464c76d713c07ad', '', 'BBIT', 3);
+INSERT INTO `students` (`id`, `uniqueid`, `fname`, `lname`, `regno`, `password`, `supervisor`, `csupervisor`, `course`, `year`) VALUES
+(1, '780697576', 'John', 'Maina', 'C027-01-0333/2018', 'e807f1fcf82d132f9bb018ca6738a19f', 'alanjackson@gmail.com', 'johndoe@gmail.com', 'IT', 3),
+(2, '780696465', 'Martin', 'Mwangi', 'C026-01-0314/2018', '25d55ad283aa400af464c76d713c07ad', '', '', 'BBIT', 3),
+(3, '485523257', 'Isaac', 'Kinyili', 'C025-01-1029/2018', '25d55ad283aa400af464c76d713c07ad', '', '', 'BBIT', 3),
+(4, '344242951', 'Murimi', 'Allan', 'C027-01-1029/2019', '25d55ad283aa400af464c76d713c07ad', 'janembele@gmail.com', 'johndoe@gmail.com', 'IT', 3),
+(5, '633681579', 'James', 'Maina', 'C025-01-1000/2018', '25d55ad283aa400af464c76d713c07ad', 'kelvinkanyua@gmail.com', 'patriciawangui@gmail.com', 'IT', 3),
+(6, '953319685', 'Allaxander', 'Kamau', 'C055-03-3434/2019', '25d55ad283aa400af464c76d713c07ad', '', '', 'IT', 2),
+(7, '1617611936', 'Ann', 'Njeri', 'C025-01-0023/2019', '25d55ad283aa400af464c76d713c07ad', '', '', 'BBIT', 3),
+(8, '129703562', 'Frank', 'Bosire', 'C025-01-1028/2018', '25d55ad283aa400af464c76d713c07ad', 'kelvinkanyua@gmail.com', 'johndoe@gmail.com', 'IT', 2);
 
 -- --------------------------------------------------------
 
@@ -271,6 +273,7 @@ INSERT INTO `tbl_answers` (`id`, `quizno`, `correct`, `answer`, `test`) VALUES
 CREATE TABLE `tbl_attachments` (
   `id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
+  `cname` varchar(200) NOT NULL,
   `category` varchar(200) NOT NULL,
   `location` varchar(200) NOT NULL,
   `startdate` date NOT NULL,
@@ -281,12 +284,67 @@ CREATE TABLE `tbl_attachments` (
 -- Dumping data for table `tbl_attachments`
 --
 
-INSERT INTO `tbl_attachments` (`id`, `title`, `category`, `location`, `startdate`, `description`) VALUES
-(1, 'Web Developer Role', 'software', 'mweiga', '2021-07-01', 'We need a web developer for 2 months'),
-(2, 'Network Engineer Intern', 'networking', 'Nyeri Town', '2021-07-07', 'Network engineer needed for july to september'),
-(3, 'Networking Admin', 'networking', 'Nyeri', '2021-07-01', 'It will start in July '),
-(4, 'Hardware Assembly', 'hardware', 'Nairobi', '2021-07-05', 'We need several interns for a paid hardware tasks'),
-(5, 'Hardware Internship', 'hardware', 'Muranga', '2021-07-10', 'We need interns on our company for 3 months');
+INSERT INTO `tbl_attachments` (`id`, `title`, `cname`, `category`, `location`, `startdate`, `description`) VALUES
+(1, 'Web Developer Role', 'Company 1', 'software', 'mweiga', '2021-07-01', 'We need a web developer for 2 months'),
+(2, 'Network Engineer Intern', 'Company 2', 'networking', 'Nyeri Town', '2021-07-07', 'Network engineer needed for july to september'),
+(3, 'Networking Admin', 'Company 3', 'networking', 'Nyeri', '2021-07-01', 'It will start in July '),
+(4, 'Hardware Assembly', 'Company 4', 'hardware', 'Nairobi', '2021-07-05', 'We need several interns for a paid hardware tasks'),
+(5, 'Hardware Internship', 'Company 5', 'hardware', 'Muranga', '2021-07-10', 'We need interns on our company for 3 months'),
+(6, 'Network Administrator', 'The NetWard Association', 'hardware', 'Kangemi', '2021-07-01', 'networking intern needed urgently');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_csupervisor_assess`
+--
+
+CREATE TABLE `tbl_csupervisor_assess` (
+  `id` int(11) NOT NULL,
+  `onemarks` int(11) NOT NULL,
+  `oneremarks` varchar(255) NOT NULL,
+  `twomarks` int(11) NOT NULL,
+  `tworemarks` varchar(200) NOT NULL,
+  `threeamarks` int(11) NOT NULL,
+  `threearemarks` varchar(200) NOT NULL,
+  `threebmarks` int(11) NOT NULL,
+  `threebremarks` varchar(200) NOT NULL,
+  `threecmarks` int(11) NOT NULL,
+  `threecremarks` varchar(200) NOT NULL,
+  `threedmarks` int(11) NOT NULL,
+  `threedremarks` varchar(200) NOT NULL,
+  `fivemarks` int(11) NOT NULL,
+  `fiveremarks` varchar(200) NOT NULL,
+  `sixmarks` int(11) NOT NULL,
+  `sixremarks` varchar(200) NOT NULL,
+  `sevenmarks` int(11) NOT NULL,
+  `sevenremarks` varchar(200) NOT NULL,
+  `eightmarks` int(11) NOT NULL,
+  `eightremarks` varchar(200) NOT NULL,
+  `ninemarks` int(11) NOT NULL,
+  `nineremarks` varchar(200) NOT NULL,
+  `tenmarks` int(11) NOT NULL,
+  `tenremarks` varchar(200) NOT NULL,
+  `elevenmarks` int(11) NOT NULL,
+  `elevenremarks` varchar(200) NOT NULL,
+  `twelvemarks` int(11) NOT NULL,
+  `twelveremarks` varchar(200) NOT NULL,
+  `thirteenmarks` int(11) NOT NULL,
+  `thirteerenmarks` varchar(200) NOT NULL,
+  `fourteenmarks` int(11) NOT NULL,
+  `fourteenremarks` varchar(200) NOT NULL,
+  `fifteenmarks` int(11) NOT NULL,
+  `fifteenremarks` varchar(200) NOT NULL,
+  `studentid` varchar(200) NOT NULL,
+  `csupid` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_csupervisor_assess`
+--
+
+INSERT INTO `tbl_csupervisor_assess` (`id`, `onemarks`, `oneremarks`, `twomarks`, `tworemarks`, `threeamarks`, `threearemarks`, `threebmarks`, `threebremarks`, `threecmarks`, `threecremarks`, `threedmarks`, `threedremarks`, `fivemarks`, `fiveremarks`, `sixmarks`, `sixremarks`, `sevenmarks`, `sevenremarks`, `eightmarks`, `eightremarks`, `ninemarks`, `nineremarks`, `tenmarks`, `tenremarks`, `elevenmarks`, `elevenremarks`, `twelvemarks`, `twelveremarks`, `thirteenmarks`, `thirteerenmarks`, `fourteenmarks`, `fourteenremarks`, `fifteenmarks`, `fifteenremarks`, `studentid`, `csupid`) VALUES
+(1, 1, 'remark one', 2, 'two', 3, '3a', 4, '3b', 4, '3c', 4, '3d', 2, '5', 2, 'six', 2, '7', 2, 'eight', 2, '9', 2, 'ten', 2, '11', 2, 'twelve', 2, '13', 1, 'fouteen', 2, '15', '780697576', '372882092'),
+(2, 1, '', 1, '', 3, '', 4, '', 4, '', 3, '', 2, '', 1, '', 2, '', 2, '', 2, '', 2, '', 2, '', 2, '', 2, '', 1, '', 1, '', '344242951', '372882092');
 
 -- --------------------------------------------------------
 
@@ -316,10 +374,11 @@ CREATE TABLE `tbl_logbook` (
 --
 
 INSERT INTO `tbl_logbook` (`id`, `uniqueid`, `week`, `mondayjob`, `mondayskill`, `tuesdayjob`, `tuesdayskill`, `wednesdayjob`, `wednesdayskill`, `thursdayjob`, `thursdayskill`, `fridayjob`, `fridayskill`, `studentid`) VALUES
-(1, '1310549269', '1', 'Designing interface', 'Monday SKill', 'Tuesday job', 'Web development skills one', 'Job Three', 'Skill Three', 'Job FOur', 'Skill Four', 'Job Five', 'Skill Five', '780697576'),
+(1, '1310549269', '1', 'Designing interface', 'Monday SKill', 'Tuesday job', 'Web development skills one', 'Job Three', 'Skill Three ncfjhdfjhdfjhdf', 'Job FOur', 'Skill Four', 'Job Five', 'Skill Five', '780697576'),
 (2, '435193926', '2', 'Job Task 2', '', '', '', '', 'Wednesday 2 Skill', '', '', '', '', '780697576'),
 (3, '228157020', '5', 'Set of Jobs', 'Set of Skills', '', '', '', '', '', '', '', '', '780697576'),
-(4, '452027212', '1', 'James Monday 1 Job', '', '', '', '', '', '', '', '', '', '633681579');
+(4, '452027212', '1', 'James Monday 1 Job', '', '', '', '', '', '', '', '', '', '633681579'),
+(5, '1591252526', '1', 'Introduction', '', '', '', '', '', '', '', '', '', '129703562');
 
 -- --------------------------------------------------------
 
@@ -395,7 +454,8 @@ CREATE TABLE `tbl_registered_attachments` (
 INSERT INTO `tbl_registered_attachments` (`id`, `studentid`, `companyname`, `companylocation`, `companyaddress`, `companycontact`, `role`, `duration`, `startdate`) VALUES
 (1, '344242951', 'We Hack It', 'Nyeri Town', '2334-1000,Nyeri', '+25745563443', 'Web Developer', '10', '2021-07-03'),
 (2, '780697576', 'Ajax Limited', 'Mweiga', '234-10200 Nyeri', '0110230220', 'Web Developer', '13', '2021-07-01'),
-(3, '633681579', 'kwetu developers', 'Meru', '234-60200', '0717275502', 'Android developer', '12', '2021-06-14');
+(3, '633681579', 'kwetu developers', 'Meru', '234-60200', '0717275502', 'Android developer', '12', '2021-06-14'),
+(4, '129703562', 'Bidii driving school', 'Muranga', '2345', '0717275502', 'Web Developer', '115', '2021-07-05');
 
 -- --------------------------------------------------------
 
@@ -519,7 +579,85 @@ INSERT INTO `tbl_responses` (`id`, `test`, `quizno`, `response`, `student_id`) V
 (111, 'networking', 7, '1', 633681579),
 (112, 'networking', 8, 'Communication', 633681579),
 (113, 'networking', 9, 'Ping', 633681579),
-(114, 'networking', 10, 'Ip address', 633681579);
+(114, 'networking', 10, 'Ip address', 633681579),
+(115, 'hardware', 1, 'Hybrid computer', 129703562),
+(116, 'hardware', 2, 'Write Once Read Many', 129703562),
+(117, 'hardware', 3, 'Central processing unit', 129703562),
+(118, 'hardware', 4, 'Virtual storage', 129703562),
+(119, 'hardware', 5, 'Data bus', 129703562),
+(120, 'hardware', 6, 'HDD', 129703562),
+(121, 'hardware', 7, 'Video display unit', 129703562),
+(122, 'hardware', 8, 'Special purpose keys', 129703562),
+(123, 'hardware', 9, 'Output devices', 129703562),
+(124, 'hardware', 10, 'BIOS', 129703562),
+(125, 'software', 1, 'Programming language', 129703562),
+(126, 'software', 2, 'Class', 129703562),
+(127, 'software', 3, 'Constructor', 129703562),
+(128, 'software', 4, 'Array', 129703562),
+(129, 'software', 5, 'Artificial intelligence', 129703562),
+(130, 'software', 6, 'True', 129703562),
+(131, 'software', 7, 'Algorithm', 129703562),
+(132, 'software', 8, 'Random', 129703562),
+(133, 'software', 9, 'Reserved', 129703562),
+(134, 'software', 10, 'If else loop', 129703562),
+(135, 'networking', 1, 'Network', 129703562),
+(136, 'networking', 2, 'Is a device connected to a network', 129703562),
+(137, 'networking', 3, 'Link', 129703562),
+(138, 'networking', 4, 'Interface layer', 129703562),
+(139, 'networking', 5, 'Encapsulation', 129703562),
+(140, 'networking', 6, 'HTTPs', 129703562),
+(141, 'networking', 7, '4', 129703562),
+(142, 'networking', 8, 'Communication', 129703562),
+(143, 'networking', 9, 'Ping', 129703562),
+(144, 'networking', 10, 'MAC address', 129703562),
+(145, 'software', 5, 'Artificial intelligence', 485523257),
+(146, 'software', 6, 'True', 485523257),
+(147, 'software', 7, 'Flow chart', 485523257),
+(148, 'software', 8, 'Runtime', 485523257),
+(149, 'software', 9, 'Reserved', 485523257),
+(150, 'software', 10, 'While', 485523257),
+(151, 'networking', 1, 'Computers', 485523257),
+(152, 'networking', 2, 'Is a system of computers', 485523257),
+(153, 'networking', 3, 'Link', 485523257),
+(154, 'networking', 4, 'Physical layer', 485523257),
+(155, 'networking', 5, 'Encapsulation', 485523257),
+(156, 'networking', 6, 'HTTPs', 485523257),
+(157, 'networking', 7, '9', 485523257),
+(158, 'networking', 8, 'Transmission', 485523257),
+(159, 'networking', 9, 'Tracert', 485523257),
+(160, 'networking', 10, 'Ip address', 485523257);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_supervisor_assess`
+--
+
+CREATE TABLE `tbl_supervisor_assess` (
+  `id` int(11) NOT NULL,
+  `studentid` varchar(200) NOT NULL,
+  `supid` varchar(200) NOT NULL,
+  `intelmarks` int(11) NOT NULL,
+  `intelremarks` varchar(200) NOT NULL,
+  `indmarks` int(11) NOT NULL,
+  `indremarks` varchar(200) NOT NULL,
+  `commarks` int(11) NOT NULL,
+  `comremarks` varchar(200) NOT NULL,
+  `innomarks` int(11) NOT NULL,
+  `innoremarks` varchar(200) NOT NULL,
+  `appmarks` int(11) NOT NULL,
+  `appremarks` varchar(200) NOT NULL,
+  `total` int(11) NOT NULL,
+  `totalremarks` varchar(200) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_supervisor_assess`
+--
+
+INSERT INTO `tbl_supervisor_assess` (`id`, `studentid`, `supid`, `intelmarks`, `intelremarks`, `indmarks`, `indremarks`, `commarks`, `comremarks`, `innomarks`, `innoremarks`, `appmarks`, `appremarks`, `total`, `totalremarks`, `date`) VALUES
+(1, '633681579', '381586187', 3, 'A', 4, 'S', 3, 'D', 4, 'F', 5, 'G', 19, 'T', '2021-06-16 16:16:58');
 
 --
 -- Indexes for dumped tables
@@ -562,6 +700,12 @@ ALTER TABLE `tbl_attachments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_csupervisor_assess`
+--
+ALTER TABLE `tbl_csupervisor_assess`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_logbook`
 --
 ALTER TABLE `tbl_logbook`
@@ -583,6 +727,12 @@ ALTER TABLE `tbl_registered_attachments`
 -- Indexes for table `tbl_responses`
 --
 ALTER TABLE `tbl_responses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_supervisor_assess`
+--
+ALTER TABLE `tbl_supervisor_assess`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -611,7 +761,7 @@ ALTER TABLE `school_supervisors`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_answers`
@@ -623,13 +773,19 @@ ALTER TABLE `tbl_answers`
 -- AUTO_INCREMENT for table `tbl_attachments`
 --
 ALTER TABLE `tbl_attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_csupervisor_assess`
+--
+ALTER TABLE `tbl_csupervisor_assess`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_logbook`
 --
 ALTER TABLE `tbl_logbook`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_questions`
@@ -641,13 +797,19 @@ ALTER TABLE `tbl_questions`
 -- AUTO_INCREMENT for table `tbl_registered_attachments`
 --
 ALTER TABLE `tbl_registered_attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_responses`
 --
 ALTER TABLE `tbl_responses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+
+--
+-- AUTO_INCREMENT for table `tbl_supervisor_assess`
+--
+ALTER TABLE `tbl_supervisor_assess`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

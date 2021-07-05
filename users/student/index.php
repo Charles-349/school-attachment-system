@@ -37,14 +37,24 @@ if (mysqli_num_rows($sql) > 0) {
                 <h2 class="text-success">Attachment Status</h2>
                 <?php if (checkIfRegisteredAttachment($sid) == "true") : ?>
                     <h5>You have already added attachment details</h5>
-                    <h5>Supervisor Email: <?php
+                    <a href="registerattachment.php" class="btn btn-primary">View Details</a>
+
+                    <h2 class="text-success">Supervisor details</h2>
+                    <h5>School Supervisor Email: <?php
                                             if ($arr['supervisor'] != "") {
                                                 echo $arr['supervisor'];
                                             } else {
                                                 echo "Not Assigned Yet";
                                             }
                                             ?></h5>
-                    <a href="registerattachment.php" class="btn btn-primary">View Details</a>
+                    <h5>Company Supervisor Email: <?php
+                                            if ($arr['csupervisor'] != "") {
+                                                echo $arr['csupervisor'];
+                                            } else {
+                                                echo "Not Assigned Yet";
+                                            }
+                                            ?></h5>
+                    
                 <?php else : ?>
                     <h5>No attachment details have been added</h5>
                     <a href="registerattachment.php" class="btn btn-primary">Add Details</a>
@@ -52,5 +62,6 @@ if (mysqli_num_rows($sql) > 0) {
             </div>
         </div>
     </div>
+    
 </section>
 <?php include "includes/footer.php"; ?>

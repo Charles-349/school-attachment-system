@@ -16,7 +16,9 @@
   <div class="main-wrapper">
     <header>
       <div class="logo">
-        <img src="images/logo.png" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px">
+        <a href="../../index.php">
+          <img src="images/logo.png" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px">
+        </a>
       </div>
       <h3 class="text-white">Student Attachment System</h3>
       <div class="nav">

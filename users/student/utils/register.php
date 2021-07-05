@@ -18,7 +18,7 @@ if (!empty($fname) && !empty($lname) && !empty($regno) && !empty($password) && !
             $ran_id = rand(time(), 100000000);
             $encrypt_pass = md5($password);
             $insert_query = mysqli_query($conn, "INSERT INTO students (uniqueid, fname, lname, regno, password, course, year)
-                                VALUES ('{$ran_id}', '{$fname}', '{$lname}', '{$regno}', '{$encrypt_pass}', '{$course}', '{$year}')");
+                                VALUES ('{$ran_id}', '{$fname}', '{$lname}', '{$regno}', '{$encrypt_pass}', '{$course}', '{$year}')") or die($conn->error);
             if ($insert_query) {
                 echo "success";
             } else {

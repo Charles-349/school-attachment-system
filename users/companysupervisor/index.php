@@ -1,14 +1,14 @@
 <?php
 session_start();
 include "includes/config.php";
-$ssupid  = $_SESSION['ssupid'];
+$csupid  = $_SESSION['csupid'];
 
-$supres = $conn->query("SELECT * FROM school_supervisors where uniqueid = '$ssupid'");
+$supres = $conn->query("SELECT * FROM company_supervisors where uniqueid = '$csupid'");
 $suparray = mysqli_fetch_assoc($supres);
 
 $supemail = $suparray['email'];
 
-$studcountres = $conn->query("SELECT * FROM students where supervisor = '$supemail'");
+$studcountres = $conn->query("SELECT * FROM students where csupervisor = '$supemail'");
 
 ?>
 
