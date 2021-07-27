@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-$result = $conn->query("SELECT * FROM school_supervisors where uniqueid = '$ssupid' ");
+$result = $conn->query("SELECT * FROM company_supervisors where uniqueid = '$csupid' ");
 
 $array = mysqli_fetch_assoc($result);
 

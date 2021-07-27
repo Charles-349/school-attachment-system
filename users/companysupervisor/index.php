@@ -1,5 +1,5 @@
+<?php include "includes/header.php"; ?>
 <?php
-session_start();
 include "includes/config.php";
 $csupid  = $_SESSION['csupid'];
 
@@ -12,7 +12,6 @@ $studcountres = $conn->query("SELECT * FROM students where csupervisor = '$supem
 
 ?>
 
-<?php include "includes/header.php"; ?>
 <section class="content row">
     <?php include "includes/sidebar.php"; ?>
 

@@ -28,7 +28,26 @@ $appremarks = "";
 $totalmarks = "";
 $totalremarks = "";
 
-if (mysqli_num_rows($checkres) > 0) {
+function calculateTotalScore($res){
+    if(mysqli_num_rows($res) < 1){
+        return 0;
+    }else{
+        $count = 0;
+        $row=mysqli_fetch_assoc($res);
+        $count += $row["intelmarks"];
+        $count += $row["indmarks"];
+        $count += $row["commarks"];
+        $count += $row["innomarks"];
+        $count += $row["appmarks"];
+
+        echo $count;
+        
+    }
+}
+$totalmarks = 0;
+
+$exists = mysqli_num_rows($checkres) > 0;
+if ($exists) {
     $checkarray = mysqli_fetch_assoc($checkres);
 
     $intelmarks = $checkarray['intelmarks'];
@@ -41,7 +60,9 @@ if (mysqli_num_rows($checkres) > 0) {
     $innoremarks = $checkarray['innoremarks'];
     $appmarks = $checkarray['appmarks'];
     $appremarks = $checkarray['appremarks'];
-    $totalmarks = $checkarray['total'];
+
+    $totalmarks = $checkarray['intelmarks']+ $checkarray['indmarks']+$checkarray['commarks']+ $checkarray['innomarks']+$checkarray['appmarks'];
+
     $totalremarks = $checkarray['totalremarks'];
 }
 ?>
@@ -83,38 +104,38 @@ if (mysqli_num_rows($checkres) > 0) {
                         <tr>
                             <th>Intellectual activity utilized in the task</th>
                             <td>5</td>
-                            <td><input value="<?php echo $intelmarks ?>" name="intelmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="intelremarks" id="" cols="30" rows="2" class="form-control"><?php echo $intelremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $intelmarks ?>" name="intelmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="intelremarks" id="" cols="30" rows="2" class="form-control"><?php echo $intelremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>Independence (ability to work without supervision)</th>
                             <td>5</td>
-                            <td><input value="<?php echo $indmarks ?>" name="indmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="indremarks" id="" cols="30" rows="2" class="form-control"><?php echo $indremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $indmarks ?>" name="indmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="indremarks" id="" cols="30" rows="2" class="form-control"><?php echo $indremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>Communication</th>
                             <td>5</td>
-                            <td><input value="<?php echo $commarks ?>" name="commarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="comremarks" id="" cols="30" rows="2" class="form-control"><?php echo $comremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $commarks ?>" name="commarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="comremarks" id="" cols="30" rows="2" class="form-control"><?php echo $comremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>Innovativeness in relation to task/project</th>
                             <td>5</td>
-                            <td><input value="<?php echo $innomarks ?>" name="innomarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="innoremarks" id="" cols="30" rows="2" class="form-control"><?php echo $innoremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $innomarks ?>" name="innomarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="innoremarks" id="" cols="30" rows="2" class="form-control"><?php echo $innoremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>Application of technology and skills in work</th>
                             <td>5</td>
-                            <td><input value="<?php echo $appmarks ?>" name="appmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="appremarks" id="" cols="30" rows="2" class="form-control"><?php echo $appremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $appmarks ?>" name="appmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="appremarks" id="" cols="30" rows="2" class="form-control"><?php echo $appremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>Total</th>
                             <td>30</td>
-                            <td><input value="<?php echo $totalmarks ?>" name="totalmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="totalremarks" id="" cols="30" rows="2" class="form-control"><?php echo $totalremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> disabled value="<?php echo $totalmarks ?>" name="totalmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="totalremarks" id="" cols="30" rows="2" class="form-control"><?php echo $totalremarks ?></textarea></td>
                         </tr>
                     </tbody>
                 </table>

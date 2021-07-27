@@ -14,27 +14,33 @@ $innomarks = mysqli_real_escape_string($conn, $_POST['innomarks']);
 $innoremarks = mysqli_real_escape_string($conn, $_POST['innoremarks']);
 $appmarks = mysqli_real_escape_string($conn, $_POST['appmarks']);
 $appremarks = mysqli_real_escape_string($conn, $_POST['appremarks']);
-$totalmarks = mysqli_real_escape_string($conn, $_POST['totalmarks']);
 $totalremarks = mysqli_real_escape_string($conn, $_POST['totalremarks']);
 
 if (
-    empty($intelmarks) &&
-    empty($intelremarks) &&
-    empty($indmarks) &&
-    empty($indremarks) &&
-    empty($commarks) &&
-    empty($comremarks) &&
-    empty($innomarks) &&
-    empty($innoremarks) &&
-    empty($appmarks) &&
-    empty($appremarks) &&
-    empty($totalmarks) &&
+    empty($intelmarks)||
+    empty($intelremarks) ||
+    empty($indmarks) ||
+    empty($indremarks) ||
+    empty($commarks) ||
+    empty($comremarks) ||
+    empty($innomarks) ||
+    empty($innoremarks) ||
+    empty($appmarks) ||
+    empty($appremarks) ||
     empty($totalremarks)
 ) {
-    echo "All fields are required";
+    echo "All Field are required";
+}else if (
+    $intelmarks > 5 ||
+    $indmarks > 5 ||
+    $commarks > 5 ||
+    $innomarks > 5 ||
+    $appmarks > 5
+){
+    echo "Please assign marks within the limit";
 } else {
     $date = date("Y-m-d H:i:s");
-    $sql = "INSERT INTO `tbl_supervisor_assess`(`studentid`, `supid`, `intelmarks`, `intelremarks`, `indmarks`, `indremarks`, `commarks`, `comremarks`, `innomarks`, `innoremarks`, `appmarks`, `appremarks`, `total`, `totalremarks`, `date`) VALUES ('{$studentid}', '{$ssupid}','{$intelmarks}', '{$intelremarks}', '{$indmarks}', '{$indremarks}', '{$commarks}', '{$comremarks}', '{$innomarks}', '{$innoremarks}', '{$appmarks}', '{$appremarks}', '{$totalmarks}', '{$totalremarks}', '{$date}')";
+    $sql = "INSERT INTO `tbl_supervisor_assess`(`studentid`, `supid`, `intelmarks`, `intelremarks`, `indmarks`, `indremarks`, `commarks`, `comremarks`, `innomarks`, `innoremarks`, `appmarks`, `appremarks`, `total`, `totalremarks`, `date`) VALUES ('{$studentid}', '{$ssupid}','{$intelmarks}', '{$intelremarks}', '{$indmarks}', '{$indremarks}', '{$commarks}', '{$comremarks}', '{$innomarks}', '{$innoremarks}', '{$appmarks}', '{$appremarks}', 55, '{$totalremarks}', '{$date}')";
 
     $insert_query = mysqli_query($conn, $sql);
     if ($insert_query) {

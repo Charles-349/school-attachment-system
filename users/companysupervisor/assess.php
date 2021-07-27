@@ -50,8 +50,8 @@ $fourteenremarks = "";
 $fifteenmarks = "";
 $fifteenremarks = "";
 
-
-if (mysqli_num_rows($checkres) > 0) {
+$exists = mysqli_num_rows($checkres) > 0;
+if ($exists) {
     $checkarray = mysqli_fetch_assoc($checkres);
     $onemarks = $checkarray['onemarks'];
     $oneremarks = $checkarray['oneremarks'];
@@ -130,14 +130,14 @@ if (mysqli_num_rows($checkres) > 0) {
                         <tr>
                             <th>1.Attendance</th>
                             <td>2</td>
-                            <td><input value="<?php echo $onemarks ?>" name="onemarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="oneremarks" id="" cols="30" rows="1" class="form-control"><?php echo $oneremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $onemarks ?>" name="onemarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="oneremarks" id="" cols="30" rows="1" class="form-control"><?php echo $oneremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>2. Punctuality</th>
                             <td>2</td>
-                            <td><input value="<?php echo $twomarks ?>" name="twomarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="tworemarks" id="" cols="30" rows="1" class="form-control"><?php echo $tworemarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $twomarks ?>" name="twomarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="tworemarks" id="" cols="30" rows="1" class="form-control"><?php echo $tworemarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th colspan="9">3. Attitude to work & Interest in work Place Skill:</th>
@@ -145,93 +145,93 @@ if (mysqli_num_rows($checkres) > 0) {
                         <tr>
                             <th> a. Basic Computer skills (typing, Operating Systems etc.)</th>
                             <td>4</td>
-                            <td><input value="<?php echo $threeamarks ?>" name="threeamarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="threearemarks" id="" cols="30" rows="1" class="form-control"><?php echo $threearemarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $threeamarks ?>" name="threeamarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="threearemarks" id="" cols="30" rows="1" class="form-control"><?php echo $threearemarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th> b. General office applications (word processing, Spreadsheets, databases)</th>
                             <td>4</td>
-                            <td><input value="<?php echo $threebmarks ?>" name="threebmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="threebremarks" id="" cols="30" rows="1" class="form-control"><?php echo $threebremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $threebmarks ?>" name="threebmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="threebremarks" id="" cols="30" rows="1" class="form-control"><?php echo $threebremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th> c. Technical applications (Networking, Maintenance, Communication)</th>
                             <td>4</td>
-                            <td><input value="<?php echo $threecmarks ?>" name="threecmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="threecremarks" id="" cols="30" rows="1" class="form-control"><?php echo $threecremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $threecmarks ?>" name="threecmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="threecremarks" id="" cols="30" rows="1" class="form-control"><?php echo $threecremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th> d. Area of specialization (please indicate) where attached.</th>
                             <td>4</td>
-                            <td><input value="<?php echo $threedmarks ?>" name="threedmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="threedremarks" id="" cols="30" rows="1" class="form-control"><?php echo $threedremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $threedmarks ?>" name="threedmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="threedremarks" id="" cols="30" rows="1" class="form-control"><?php echo $threedremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>5. Scientific and Technical knowledge</th>
                             <td>2</td>
-                            <td><input value="<?php echo $fivemarks ?>" name="fivemarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="fiveremarks" id="" cols="30" rows="1" class="form-control"><?php echo $fiveremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $fivemarks ?>" name="fivemarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="fiveremarks" id="" cols="30" rows="1" class="form-control"><?php echo $fiveremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>6. Intelligence / quality of work</th>
                             <td>2</td>
-                            <td><input value="<?php echo $sixmarks ?>" name="sixmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="sixremarks" id="" cols="30" rows="1" class="form-control"><?php echo $sixremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $sixmarks ?>" name="sixmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="sixremarks" id="" cols="30" rows="1" class="form-control"><?php echo $sixremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>7. Ability to learn and perform tasks</th>
                             <td>2</td>
-                            <td><input value="<?php echo $sevenmarks ?>" name="sevenmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="sevenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $sevenremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $sevenmarks ?>" name="sevenmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="sevenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $sevenremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>8. Acceptability to colleagues, Subordinates, Supervisor (s)</th>
                             <td>2</td>
-                            <td><input value="<?php echo $eightmarks ?>" name="eightmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="eightremarks" id="" cols="30" rows="1" class="form-control"><?php echo $eightremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $eightmarks ?>" name="eightmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="eightremarks" id="" cols="30" rows="1" class="form-control"><?php echo $eightremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>9. Acceptance of responsibility</th>
                             <td>2</td>
-                            <td><input value="<?php echo $ninemarks ?>" name="ninemarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="nineremarks" id="" cols="30" rows="1" class="form-control"><?php echo $nineremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $ninemarks ?>" name="ninemarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="nineremarks" id="" cols="30" rows="1" class="form-control"><?php echo $nineremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>10. Initiative / creativity</th>
                             <td>2</td>
-                            <td><input value="<?php echo $tenmarks ?>" name="tenmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="tenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $tenremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $tenmarks ?>" name="tenmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="tenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $tenremarks ?></textarea></td>
                         </tr>
 
                         <tr>
                             <th>11. Judgement in situations/ improvisation</th>
                             <td>2</td>
-                            <td><input value="<?php echo $elevenmarks ?>" name="elevenmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="elevenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $elevenremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $elevenmarks ?>" name="elevenmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="elevenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $elevenremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>12. Dependability and Reliability</th>
                             <td>2</td>
-                            <td><input value="<?php echo $twelvemarks ?>" name="twelvemarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="twelveremarks" id="" cols="30" rows="1" class="form-control"><?php echo $twelveremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $twelvemarks ?>" name="twelvemarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="twelveremarks" id="" cols="30" rows="1" class="form-control"><?php echo $twelveremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>13. Adaptability to environment/ Adjustment</th>
                             <td>2</td>
-                            <td><input value="<?php echo $thirteenmarks ?>" name="thirteenmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="thirteerenmarks" id="" cols="30" rows="1" class="form-control"><?php echo $thirteerenmarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $thirteenmarks ?>" name="thirteenmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="thirteerenmarks" id="" cols="30" rows="1" class="form-control"><?php echo $thirteerenmarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>14. Organization & Planning</th>
                             <td>1</td>
-                            <td><input value="<?php echo $fourteenmarks ?>" name="fourteenmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="fourteenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $fourteenremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $fourteenmarks ?>" name="fourteenmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="fourteenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $fourteenremarks ?></textarea></td>
                         </tr>
                         <tr>
                             <th>15. Effective use of student’s time</th>
                             <td>2</td>
-                            <td><input value="<?php echo $fifteenmarks ?>" name="fifteenmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea name="fifteenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $fifteenremarks ?></textarea></td>
+                            <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $fifteenmarks ?>" name="fifteenmarks" type="number" max="5" class="form-control"></td>
+                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="fifteenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $fifteenremarks ?></textarea></td>
                         </tr>
                     </tbody>
                 </table>
