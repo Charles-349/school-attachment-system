@@ -2,10 +2,16 @@
 include "functions_all.php";
 include "includes/header.php";
 
-$course = $_GET['course'];
-$year = $_GET['year'];
-
-
+if(isset($_GET['course'])){
+    $course = $_GET['course'];
+}else{
+    $course = "all";
+}
+if(isset($_GET['year'])){
+    $year = $_GET['year'];
+}else{
+    $year = "all";
+}
 
 
 ?>
@@ -41,11 +47,12 @@ $year = $_GET['year'];
                             <th scope="col">Course</th>
                             <th scope="col">Year</th>
                             <th scope="col">Password Reset</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        if (!isset($course) && !isset($year)) {
+                        if ($course =="all" && $year == "all") {
                             getAllStudents();
                         }else{
                             getFilteredStudents($year, $course);
@@ -72,9 +79,7 @@ $year = $_GET['year'];
         const course = courseInput.value;
         const year = yearInput.value;
 
-        if (course === "all" && year === "all") {
-            location.href = "students.php";
-        } else if (course === "all" && year != "all") {
+        if (course === "all" && year !== "all") {
             location.href = `students.php?year=${year}`;
         } else if (course != "all" && year == "all") {
             location.href = `students.php?course=${course}`;

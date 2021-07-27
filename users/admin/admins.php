@@ -47,6 +47,7 @@ include "includes/header.php";
                             <th scope="col">First name</th>
                             <th scope="col">Last name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>

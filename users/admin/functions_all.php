@@ -35,7 +35,7 @@ function getNumOfCompanySupervisors()
 function getAllAdmins()
 {
     include "includes/config.php";
-    $result = mysqli_query($conn, "SELECT * from admins");
+    $result = mysqli_query($conn, "SELECT * from admins where uniqueid != $_SESSION[adminid] ");
 
     if (mysqli_num_rows($result) > 0) {
         $count = 0;
@@ -47,6 +47,7 @@ function getAllAdmins()
                 <td><?php echo $row['firstname'] ?></td>
                 <td><?php echo $row['lastname'] ?></td>
                 <td><?php echo $row['email'] ?></td>
+                <td><a href="deleteAdmin.php?id=<?php echo $row['uniqueid'] ?>" class="btn btn-danger">Delete</a></td>
             </tr>
         <?php
         }
@@ -72,6 +73,7 @@ function getAllStudents()
                 <td><?php echo $row['course'] ?></td>
                 <td><?php echo $row['year'] ?></td>
                 <td><a href="passreset.php?studentid=<?php echo $row['uniqueid'] ?>" class="btn btn-success">Reset</a></td>
+                <td><a href="deleteStudent.php?id=<?php echo $row['uniqueid'] ?>" class="btn btn-danger">Delete</a></td>
             </tr>
         <?php
         }
@@ -128,6 +130,7 @@ function getAssignedAdmins()
     include "includes/config.php";
     $stresult = mysqli_query($conn, "SELECT * from students where supervisor != ''");
     if (mysqli_num_rows($stresult) > 0) {
+        $count =0;
         while ($row = mysqli_fetch_assoc($stresult)) {
             $count++;
         ?>
@@ -187,6 +190,7 @@ function getAllCompanySupervisors()
                 <td><?php echo $row['lastname'] ?></td>
                 <td><?php echo $row['company'] ?></td>
                 <td><?php echo $row['email'] ?></td>
+                <td><a href="deleteCSupervisor.php?id=<?php echo $row['uniqueid'] ?>&email=<?php echo $row['email'] ?>" class="btn btn-danger">Delete</a></td>
             </tr>
         <?php
         }
@@ -211,6 +215,7 @@ function getAllSchoolSupervisors()
                 <td><?php echo $row['lastname'] ?></td>
                 <td><?php echo $row['department'] ?></td>
                 <td><?php echo $row['email'] ?></td>
+                <td><a href="deleteSsupervisor.php?id=<?php echo $row['uniqueid'] ?>" class="btn btn-danger">Delete</a></td>
             </tr>
 <?php
         }
