@@ -177,7 +177,7 @@ if ($exists) {
                         location.href = location.href;
                     } else {
                         alert(data);
-                        location.href = location.href;
+                        // location.href = location.href;
                     }
                 }
             }

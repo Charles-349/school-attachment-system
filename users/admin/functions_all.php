@@ -81,6 +81,35 @@ function getAllStudents()
         echo "<tr><td>No student</td></tr>";
     }
 }
+function getAttachedStudents()
+{
+    include "includes/config.php";
+    $result = mysqli_query($conn, "SELECT students.*, tbl_registered_attachments.* FROM students INNER JOIN `tbl_registered_attachments` ON students.uniqueid = tbl_registered_attachments.studentid");
+
+    if (mysqli_num_rows($result) > 0) {
+        $count = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $count++;
+        ?>
+            <tr>
+                <th><?php echo $count ?></th>
+                <td><?php echo $row['fname'] ." ". $row['lname'] ?></td>
+                <td><?php echo $row['regno'] ?></td>
+                <td><?php echo $row['course'] ?></td>
+                <td><?php echo $row['supervisor'] ?></td>
+                <td><?php echo $row['csupervisor'] ?></td>
+                <td><?php echo $row['companyname']."<br>". $row['companylocation']."<br>". $row['companyaddress']?></td>
+                <td><a href="attachedstudents.php?studentid=<?php echo $row['uniqueid'] ?>" class="btn btn-success">View</a></td>
+            </tr>
+        <?php
+        }
+    } else {
+        echo "<tr><td>No student</td></tr>";
+    }
+}
+
+
+
 function getFilteredStudents($year, $course){
     include "includes/config.php";
 

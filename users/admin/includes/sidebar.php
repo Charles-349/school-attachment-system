@@ -35,6 +35,9 @@ $array = mysqli_fetch_assoc($result);
         <a href="students.php" class="side-nav-item">
             <div><i class="fa fa-map-marker mr-3" aria-hidden="true"></i>Students</div>
         </a>
+        <a href="attachedstudents.php" class="side-nav-item">
+            <div><i class="fa fa-map-marker mr-3" aria-hidden="true"></i>Attached Students</div>
+        </a>
         <a href="assignsupervisor.php" class="side-nav-item">
             <div><i class="fa fa-list mr-3" aria-hidden="true"></i>Assign Supervisor</div>
         </a>

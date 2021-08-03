@@ -37,6 +37,10 @@ if(isset($_GET['year'])){
         <div class="row mt-3">
             <div class="col">
                 <h2 class="text-success">All Students</h2>
+                <form class="form-inline d-flex justify-content-end" method="post" action="generate_pdf.php">
+                <button type="submit" id="pdf" name="generate_pdf" class="m-3 btn btn-warning"><i class="fa fa-pdf"" aria-hidden="true"></i>
+                Export PDF</button> 
+                </form>
                 <table class="table">
                     <thead>
                         <tr>

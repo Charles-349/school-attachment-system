@@ -41,42 +41,63 @@ $fifteenremarks = mysqli_real_escape_string($conn, $_POST['fifteenremarks']);
 
 if (
 
-    empty($onemarks) &&
-    empty($oneremarks) &&
-    empty($twomarks) &&
-    empty($tworemarks) &&
-    empty($threeamarks) &&
-    empty($threearemarks) &&
-    empty($threebmarks) &&
-    empty($threebremarks) &&
-    empty($threecmarks) &&
-    empty($threecremarks) &&
-    empty($threedmarks) &&
-    empty($threedremarks) &&
-    empty($fivemarks) &&
-    empty($fiveremarks) &&
-    empty($sixmarks) &&
-    empty($sixremarks) &&
-    empty($sevenmarks) &&
-    empty($sevenremarks) &&
-    empty($eightmarks) &&
-    empty($eightremarks) &&
-    empty($ninemarks) &&
-    empty($nineremarks) &&
-    empty($tenmarks) &&
-    empty($tenremarks) &&
-    empty($elevenmarks) &&
-    empty($elevenremarks) &&
-    empty($twelvemarks) &&
-    empty($twelveremarks) &&
-    empty($thirteenmarks) &&
-    empty($thirteerenmarks) &&
-    empty($fourteenmarks) &&
-    empty($fourteenremarks) &&
-    empty($fifteenmarks) &&
+    empty($onemarks) ||
+    empty($oneremarks) ||
+    empty($twomarks) ||
+    empty($tworemarks) ||
+    empty($threeamarks) ||
+    empty($threearemarks) ||
+    empty($threebmarks) ||
+    empty($threebremarks) ||
+    empty($threecmarks) ||
+    empty($threecremarks) ||
+    empty($threedmarks) ||
+    empty($threedremarks) ||
+    empty($fivemarks) ||
+    empty($fiveremarks) ||
+    empty($sixmarks) ||
+    empty($sixremarks) ||
+    empty($sevenmarks) ||
+    empty($sevenremarks) ||
+    empty($eightmarks) ||
+    empty($eightremarks) ||
+    empty($ninemarks) ||
+    empty($nineremarks) ||
+    empty($tenmarks) ||
+    empty($tenremarks) ||
+    empty($elevenmarks) ||
+    empty($elevenremarks) ||
+    empty($twelvemarks) ||
+    empty($twelveremarks) ||
+    empty($thirteenmarks) ||
+    empty($thirteerenmarks) ||
+    empty($fourteenmarks) ||
+    empty($fourteenremarks) ||
+    empty($fifteenmarks) ||
     empty($fifteenremarks)
 ) {
     echo "All fields are required";
+} else if (
+
+    $onemarks>2 ||
+    $twomarks>2 ||
+    $threeamarks>4 ||
+    $threebmarks>4 ||
+    $threecmarks>4 ||
+    $threedmarks>4 ||
+    $fivemarks>2 ||
+    $sixmarks>2 ||
+    $sevenmarks>2 ||
+    $eightmarks>2 ||
+    $ninemarks>2 ||
+    $tenmarks>2 ||
+    $elevenmarks>2 ||
+    $twelvemarks>2 ||
+    $thirteenmarks>2 ||
+    $fourteenmarks>1 ||
+    $fifteenmarks>2
+) {
+    echo "Please assign marks within the limit";
 } else {
     $date = date("Y-m-d H:i:s");
     $sql = "INSERT INTO `tbl_csupervisor_assess` (`onemarks`, `oneremarks`, `twomarks`, `tworemarks`, `threeamarks`, `threearemarks`, `threebmarks`, `threebremarks`, `threecmarks`, `threecremarks`, `threedmarks`, `threedremarks`, `fivemarks`, `fiveremarks`, `sixmarks`, `sixremarks`, `sevenmarks`, `sevenremarks`, `eightmarks`, `eightremarks`, `ninemarks`, `nineremarks`, `tenmarks`, `tenremarks`, `elevenmarks`, `elevenremarks`, `twelvemarks`, `twelveremarks`, `thirteenmarks`, `thirteerenmarks`, `fourteenmarks`, `fourteenremarks`, `fifteenmarks`, `fifteenremarks`, `studentid`, `csupid`) VALUES ('{$onemarks}', '{$oneremarks}','{$twomarks}', '{$tworemarks}', '{$threeamarks}', '{$threearemarks}', '{$threebmarks}', '{$threebremarks}', '{$threecmarks}', '{$threecremarks}', '{$threedmarks}', '{$threedremarks}', '{$fivemarks}','{$fiveremarks}', '{$sixmarks}', '{$sixremarks}', '{$sevenmarks}', '{$sevenremarks}', '{$eightmarks}', '{$eightremarks}','{$ninemarks}', '{$nineremarks}', '{$tenmarks}', '{$tenremarks}', '{$elevenmarks}', '{$elevenremarks}','{$twelvemarks}', '{$twelveremarks}', '{$thirteenmarks}','{$thirteerenmarks}', '{$fourteenmarks}', '{$fourteenremarks}', '{$fifteenmarks}','{$fifteenremarks}', '{$studentid}', '{$csupid}')";

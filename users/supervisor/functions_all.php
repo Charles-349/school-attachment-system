@@ -23,6 +23,7 @@ function getAllAssignedStudents($ssupid){
                 <td><?php echo $comrow['startdate'] ?></td>
                 <td><?php echo $comrow['duration']." Weeks" ?></td>
                 <td> <a href="assess.php?studentid=<?php echo $row['uniqueid'] ?>" class="btn btn-outline-success">Assess</a></td>
+                <td> <a href="logbook.php?studentid=<?php echo $row['uniqueid'] ?>&week=1" class="btn btn-outline-success">Log book</a></td>
             </tr>
 <?php
         }
