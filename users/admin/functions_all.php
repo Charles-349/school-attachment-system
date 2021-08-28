@@ -114,9 +114,9 @@ function getFilteredStudents($year, $course){
     include "includes/config.php";
 
     $query = "";
-    if($year==""){
+    if($year=="all"){
         $query = "SELECT * from students WHERE course = '$course'";
-    }else if($course==""){
+    }else if($course=="all"){
         $query = "SELECT * from students WHERE year = '$year'";
     }else{
         $query = "SELECT * from students WHERE course = '$course' AND year = '$year' ";
@@ -152,6 +152,99 @@ function getNumOfStudentsRegistered()
     $result = mysqli_query($conn, "SELECT * from tbl_registered_attachments");
 
     return mysqli_num_rows($result);
+}
+
+function getNumOfStudentsAssessed()
+{
+    include "includes/config.php";
+    $result = mysqli_query($conn, "SELECT tbl_supervisor_assess.studentid from tbl_supervisor_assess INNER JOIN tbl_csupervisor_assess ON tbl_supervisor_assess.studentid = tbl_csupervisor_assess.studentid");
+
+    return mysqli_num_rows($result);
+}
+
+function getCAssessmentScore($id)
+{
+    include "includes/config.php";
+    $cmarks = 0;
+    $result = mysqli_query($conn, "SELECT tbl_supervisor_assess.*,tbl_csupervisor_assess.*  from tbl_supervisor_assess INNER JOIN tbl_csupervisor_assess ON tbl_supervisor_assess.studentid = tbl_csupervisor_assess.studentid where tbl_supervisor_assess.studentid= $id and tbl_csupervisor_assess.studentid = $id");
+
+    $row = mysqli_fetch_assoc($result);
+
+    $cmarks += $row['onemarks'];
+    $cmarks += $row['twomarks'];
+    $cmarks += $row['threeamarks'];
+    $cmarks += $row['threebmarks'];
+    $cmarks += $row['threecmarks'];
+    $cmarks += $row['threedmarks'];
+    $cmarks += $row['fivemarks'];
+    $cmarks += $row['sixmarks'];
+    $cmarks += $row['sevenmarks'];
+    $cmarks += $row['eightmarks'];
+    $cmarks += $row['ninemarks'];
+    $cmarks += $row['tenmarks'];
+    $cmarks += $row['elevenmarks'];
+    $cmarks += $row['twelvemarks'];
+    $cmarks += $row['thirteenmarks'];
+    $cmarks += $row['fourteenmarks'];
+    $cmarks += $row['fifteenmarks'];
+
+    return $cmarks;
+}
+
+function getSAssessmentScore($id)
+{
+    include "includes/config.php";
+    $smarks = 0;
+    $result = mysqli_query($conn, "SELECT tbl_supervisor_assess.*,tbl_csupervisor_assess.*  from tbl_supervisor_assess INNER JOIN tbl_csupervisor_assess ON tbl_supervisor_assess.studentid = tbl_csupervisor_assess.studentid where tbl_supervisor_assess.studentid= $id and tbl_csupervisor_assess.studentid = $id");
+
+    $row = mysqli_fetch_assoc($result);
+
+    $smarks+= $row['intelmarks'];
+    $smarks+= $row['indmarks'];
+    $smarks+= $row['commarks'];
+    $smarks+= $row['innomarks'];
+    $smarks+= $row['appmarks'];
+
+    return $smarks;
+}
+
+
+function getAssessmentResult($id)
+{
+    include "includes/config.php";
+    $cmarks = 0;
+    $smarks = 0;
+    $result = mysqli_query($conn, "SELECT tbl_supervisor_assess.*,tbl_csupervisor_assess.*  from tbl_supervisor_assess INNER JOIN tbl_csupervisor_assess ON tbl_supervisor_assess.studentid = tbl_csupervisor_assess.studentid where tbl_supervisor_assess.studentid= $id and tbl_csupervisor_assess.studentid = $id");
+
+    $row = mysqli_fetch_assoc($result);
+
+    $smarks+= $row['intelmarks'];
+    $smarks+= $row['indmarks'];
+    $smarks+= $row['commarks'];
+    $smarks+= $row['innomarks'];
+    $smarks+= $row['appmarks'];
+
+    $cmarks += $row['onemarks'];
+    $cmarks += $row['twomarks'];
+    $cmarks += $row['threeamarks'];
+    $cmarks += $row['threebmarks'];
+    $cmarks += $row['threecmarks'];
+    $cmarks += $row['threedmarks'];
+    $cmarks += $row['fivemarks'];
+    $cmarks += $row['sixmarks'];
+    $cmarks += $row['sevenmarks'];
+    $cmarks += $row['eightmarks'];
+    $cmarks += $row['ninemarks'];
+    $cmarks += $row['tenmarks'];
+    $cmarks += $row['elevenmarks'];
+    $cmarks += $row['twelvemarks'];
+    $cmarks += $row['thirteenmarks'];
+    $cmarks += $row['fourteenmarks'];
+    $cmarks += $row['fifteenmarks'];
+
+    $total = ($cmarks*2.5+$smarks*(100/30))/2;
+
+    return $total;
 }
 
 function getAssignedAdmins()

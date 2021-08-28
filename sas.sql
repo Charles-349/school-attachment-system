@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 18, 2021 at 05:55 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Host: 127.0.0.1
+-- Generation Time: Aug 20, 2021 at 05:35 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,7 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `uniqueid`, `lastname`, `firstname`, `email`, `password`) VALUES
 (1, '1306605553', 'Martin', 'Admin', 'admin@gmail.com', 'c93ccd78b2076528346216b3b2f701e6'),
-(3, '915101905', 'Kimathi', 'Alex', 'alexkimathi@gmail.com', '25d55ad283aa400af464c76d713c07ad');
+(9, '178273088', 'Mwangi', 'Martin', 'gabywart@gmail.com', '25d55ad283aa400af464c76d713c07ad');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,6 @@ CREATE TABLE `company_supervisors` (
 --
 
 INSERT INTO `company_supervisors` (`id`, `uniqueid`, `firstname`, `lastname`, `company`, `email`, `password`) VALUES
-(1, '372882092', 'John', 'Doe', 'Tech Hub', 'johndoe@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
 (2, '505077056', 'Patricia', 'Wangui', 'Tech World', 'patriciawangui@gmail.com', '25d55ad283aa400af464c76d713c07ad');
 
 -- --------------------------------------------------------
@@ -90,7 +89,6 @@ CREATE TABLE `school_supervisors` (
 
 INSERT INTO `school_supervisors` (`id`, `uniqueid`, `firstname`, `lastname`, `department`, `email`, `password`) VALUES
 (1, '801666280', 'Alan', 'Jackson', 'cs', 'alanjackson@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
-(2, '329275700', 'Jane', 'Mbele', 'it', 'janembele@gmail.com', '25d55ad283aa400af464c76d713c07ad'),
 (3, '381586187', 'Kelvin', 'Kanyua', 'bbit', 'kelvinkanyua@gmail.com', '25d55ad283aa400af464c76d713c07ad');
 
 -- --------------------------------------------------------
@@ -117,14 +115,26 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `uniqueid`, `fname`, `lname`, `regno`, `password`, `supervisor`, `csupervisor`, `course`, `year`) VALUES
-(1, '780697576', 'John', 'Maina', 'C027-01-0333/2018', 'e807f1fcf82d132f9bb018ca6738a19f', 'alanjackson@gmail.com', 'johndoe@gmail.com', 'IT', 3),
-(2, '780696465', 'Martin', 'Mwangi', 'C026-01-0314/2018', '25d55ad283aa400af464c76d713c07ad', '', '', 'BBIT', 3),
-(3, '485523257', 'Isaac', 'Kinyili', 'C025-01-1029/2018', '25d55ad283aa400af464c76d713c07ad', '', '', 'BBIT', 3),
-(4, '344242951', 'Murimi', 'Allan', 'C027-01-1029/2019', '25d55ad283aa400af464c76d713c07ad', 'janembele@gmail.com', 'johndoe@gmail.com', 'IT', 3),
-(5, '633681579', 'James', 'Maina', 'C025-01-1000/2018', '25d55ad283aa400af464c76d713c07ad', 'kelvinkanyua@gmail.com', 'patriciawangui@gmail.com', 'IT', 3),
 (6, '953319685', 'Allaxander', 'Kamau', 'C055-03-3434/2019', '25d55ad283aa400af464c76d713c07ad', '', '', 'IT', 2),
-(7, '1617611936', 'Ann', 'Njeri', 'C025-01-0023/2019', '25d55ad283aa400af464c76d713c07ad', '', '', 'BBIT', 3),
-(8, '129703562', 'Frank', 'Bosire', 'C025-01-1028/2018', '25d55ad283aa400af464c76d713c07ad', 'kelvinkanyua@gmail.com', 'johndoe@gmail.com', 'IT', 2);
+(7, '1617611936', 'Ann', 'Njeri', 'C025-01-0023/2019', '25d55ad283aa400af464c76d713c07ad', 'kelvinkanyua@gmail.com', 'patriciawangui@gmail.com', 'BBIT', 3),
+(9, '155759375', 'Allaxander', 'Kane', 'C025-01-1000/2018', '25d55ad283aa400af464c76d713c07ad', '', '', 'IT', 4),
+(10, '1003032209', 'All', 'Mee', 'C025-01-1088/2018', '25d55ad283aa400af464c76d713c07ad', '', '', 'BBIT', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `student_view`
+-- (See below for the actual view)
+--
+CREATE TABLE `student_view` (
+`fname` varchar(255)
+,`lname` varchar(255)
+,`regno` varchar(255)
+,`supervisor` varchar(200)
+,`csupervisor` varchar(200)
+,`course` varchar(200)
+,`year` int(11)
+);
 
 -- --------------------------------------------------------
 
@@ -343,8 +353,7 @@ CREATE TABLE `tbl_csupervisor_assess` (
 --
 
 INSERT INTO `tbl_csupervisor_assess` (`id`, `onemarks`, `oneremarks`, `twomarks`, `tworemarks`, `threeamarks`, `threearemarks`, `threebmarks`, `threebremarks`, `threecmarks`, `threecremarks`, `threedmarks`, `threedremarks`, `fivemarks`, `fiveremarks`, `sixmarks`, `sixremarks`, `sevenmarks`, `sevenremarks`, `eightmarks`, `eightremarks`, `ninemarks`, `nineremarks`, `tenmarks`, `tenremarks`, `elevenmarks`, `elevenremarks`, `twelvemarks`, `twelveremarks`, `thirteenmarks`, `thirteerenmarks`, `fourteenmarks`, `fourteenremarks`, `fifteenmarks`, `fifteenremarks`, `studentid`, `csupid`) VALUES
-(1, 1, 'remark one', 2, 'two', 3, '3a', 4, '3b', 4, '3c', 4, '3d', 2, '5', 2, 'six', 2, '7', 2, 'eight', 2, '9', 2, 'ten', 2, '11', 2, 'twelve', 2, '13', 1, 'fouteen', 2, '15', '780697576', '372882092'),
-(2, 1, '', 1, '', 3, '', 4, '', 4, '', 3, '', 2, '', 1, '', 2, '', 2, '', 2, '', 2, '', 2, '', 2, '', 2, '', 1, '', 1, '', '344242951', '372882092');
+(3, 1, 'rttr', 2, '333', 2, '444', 3, 'fv', 4, 'g', 4, 'v', 2, 'fgj', 2, 'tr', 2, 'trtr', 2, 'gfrt', 2, 'fgfg', 2, 'fgfg', 2, 'vf', 2, 'yy', 2, 'uu', 1, 'gg', 2, 'fgf', '1617611936', '505077056');
 
 -- --------------------------------------------------------
 
@@ -374,11 +383,7 @@ CREATE TABLE `tbl_logbook` (
 --
 
 INSERT INTO `tbl_logbook` (`id`, `uniqueid`, `week`, `mondayjob`, `mondayskill`, `tuesdayjob`, `tuesdayskill`, `wednesdayjob`, `wednesdayskill`, `thursdayjob`, `thursdayskill`, `fridayjob`, `fridayskill`, `studentid`) VALUES
-(1, '1310549269', '1', 'Designing interface', 'Monday SKill', 'Tuesday job', 'Web development skills one', 'Job Three', 'Skill Three ncfjhdfjhdfjhdf', 'Job FOur', 'Skill Four', 'Job Five', 'Skill Five', '780697576'),
-(2, '435193926', '2', 'Job Task 2', '', '', '', '', 'Wednesday 2 Skill', '', '', '', '', '780697576'),
-(3, '228157020', '5', 'Set of Jobs', 'Set of Skills', '', '', '', '', '', '', '', '', '780697576'),
-(4, '452027212', '1', 'James Monday 1 Job', '', '', '', '', '', '', '', '', '', '633681579'),
-(5, '1591252526', '1', 'Introduction', '', '', '', '', '', '', '', '', '', '129703562');
+(6, '587933850', '1', 'Assigned dev work', 'HTML', 'Wdfvbbfgd ', 'rty5ryh', 'drrt', 'rty5rh6', 'wet4ed4tg', 'trfurt', 'wrgey5dgyh', 'rtu546778', '1617611936');
 
 -- --------------------------------------------------------
 
@@ -452,10 +457,7 @@ CREATE TABLE `tbl_registered_attachments` (
 --
 
 INSERT INTO `tbl_registered_attachments` (`id`, `studentid`, `companyname`, `companylocation`, `companyaddress`, `companycontact`, `role`, `duration`, `startdate`) VALUES
-(1, '344242951', 'We Hack It', 'Nyeri Town', '2334-1000,Nyeri', '+25745563443', 'Web Developer', '10', '2021-07-03'),
-(2, '780697576', 'Ajax Limited', 'Mweiga', '234-10200 Nyeri', '0110230220', 'Web Developer', '13', '2021-07-01'),
-(3, '633681579', 'kwetu developers', 'Meru', '234-60200', '0717275502', 'Android developer', '12', '2021-06-14'),
-(4, '129703562', 'Bidii driving school', 'Muranga', '2345', '0717275502', 'Web Developer', '115', '2021-07-05');
+(5, '1617611936', 'The Newer Company', 'Kiganari Location', '3444-16664 Murutanga', '+94735244233', 'Developer', '12', '2021-07-28');
 
 -- --------------------------------------------------------
 
@@ -506,126 +508,36 @@ INSERT INTO `tbl_responses` (`id`, `test`, `quizno`, `response`, `student_id`) V
 (38, 'networking', 8, 'Transmission', 780697576),
 (39, 'networking', 9, 'Tracert', 780697576),
 (40, 'networking', 10, 'Unicast address', 780697576),
-(41, 'hardware', 1, 'Digital computer', 485523257),
-(42, 'hardware', 2, 'Wanted Original Read Memory', 485523257),
-(43, 'hardware', 3, 'Control unit', 485523257),
-(44, 'hardware', 4, 'Multiprocessing', 485523257),
-(45, 'hardware', 5, 'Address bus and data bus', 485523257),
-(46, 'hardware', 6, 'Optical drive', 485523257),
-(47, 'hardware', 7, 'Video card', 485523257),
-(48, 'hardware', 8, 'Navigation keys', 485523257),
-(49, 'hardware', 9, 'Signaled devices', 485523257),
-(50, 'hardware', 10, 'ROM', 485523257),
-(51, 'software', 1, 'Binary language', 485523257),
-(52, 'software', 2, 'Class', 485523257),
-(53, 'software', 3, 'Abstract', 485523257),
-(54, 'software', 4, 'Array', 485523257),
-(55, 'networking', 1, 'Network', 344242951),
-(56, 'networking', 2, 'Is a device connected to a network', 344242951),
-(57, 'networking', 3, 'Link', 344242951),
-(58, 'networking', 4, 'Interface layer', 344242951),
-(59, 'networking', 5, 'Encapsulation', 344242951),
-(60, 'networking', 6, 'HTTPs', 344242951),
-(61, 'networking', 7, '4', 344242951),
-(62, 'networking', 8, 'Communication', 344242951),
-(63, 'networking', 9, 'Ping', 344242951),
-(64, 'networking', 10, 'Unicast address', 344242951),
-(65, 'software', 1, 'Programming language', 344242951),
-(66, 'software', 2, 'Class', 344242951),
-(67, 'software', 3, 'Constructor', 344242951),
-(68, 'software', 4, 'Array', 344242951),
-(69, 'software', 5, 'Artificial intelligence', 344242951),
-(70, 'software', 6, 'True', 344242951),
-(71, 'software', 7, 'Algorithm', 344242951),
-(72, 'software', 8, 'Random', 344242951),
-(73, 'software', 9, 'Proposed', 344242951),
-(74, 'software', 10, 'For loop', 344242951),
-(75, 'hardware', 1, 'Digital computer', 344242951),
-(76, 'hardware', 2, 'Wanted Original Read Memory', 344242951),
-(77, 'hardware', 3, 'Input device', 344242951),
-(78, 'hardware', 4, 'Virtual storage', 344242951),
-(79, 'hardware', 5, 'Data bus', 344242951),
-(80, 'hardware', 6, 'HDD', 344242951),
-(81, 'hardware', 7, 'Video display unit', 344242951),
-(82, 'hardware', 8, 'Special purpose keys', 344242951),
-(83, 'hardware', 9, 'Output devices', 344242951),
-(84, 'hardware', 10, 'BIOS', 344242951),
-(85, 'hardware', 1, 'Digital computer', 633681579),
-(86, 'hardware', 2, 'Wanted Once Read Memory', 633681579),
-(87, 'hardware', 3, 'Control unit', 633681579),
-(88, 'hardware', 4, 'Virtual storage', 633681579),
-(89, 'hardware', 5, 'Data bus', 633681579),
-(90, 'hardware', 6, 'HDD', 633681579),
-(91, 'hardware', 7, 'Power supply box', 633681579),
-(92, 'hardware', 8, 'Standard keys', 633681579),
-(93, 'hardware', 9, 'Output/input devices', 633681579),
-(94, 'hardware', 10, 'CPU', 633681579),
-(95, 'software', 1, 'Coding language', 633681579),
-(96, 'software', 2, 'Method', 633681579),
-(97, 'software', 3, 'Constructor', 633681579),
-(98, 'software', 4, 'Array', 633681579),
-(99, 'software', 5, 'OOP', 633681579),
-(100, 'software', 6, 'True', 633681579),
-(101, 'software', 7, 'Data flow', 633681579),
-(102, 'software', 8, 'Random', 633681579),
-(103, 'software', 9, 'Variable', 633681579),
-(104, 'software', 10, 'Do-while loop', 633681579),
-(105, 'networking', 1, 'Node', 633681579),
-(106, 'networking', 2, 'Is a computer network', 633681579),
-(107, 'networking', 3, 'Cable', 633681579),
-(108, 'networking', 4, 'Data link layer', 633681579),
-(109, 'networking', 5, 'Inheritance', 633681579),
-(110, 'networking', 6, 'VPN', 633681579),
-(111, 'networking', 7, '1', 633681579),
-(112, 'networking', 8, 'Communication', 633681579),
-(113, 'networking', 9, 'Ping', 633681579),
-(114, 'networking', 10, 'Ip address', 633681579),
-(115, 'hardware', 1, 'Hybrid computer', 129703562),
-(116, 'hardware', 2, 'Write Once Read Many', 129703562),
-(117, 'hardware', 3, 'Central processing unit', 129703562),
-(118, 'hardware', 4, 'Virtual storage', 129703562),
-(119, 'hardware', 5, 'Data bus', 129703562),
-(120, 'hardware', 6, 'HDD', 129703562),
-(121, 'hardware', 7, 'Video display unit', 129703562),
-(122, 'hardware', 8, 'Special purpose keys', 129703562),
-(123, 'hardware', 9, 'Output devices', 129703562),
-(124, 'hardware', 10, 'BIOS', 129703562),
-(125, 'software', 1, 'Programming language', 129703562),
-(126, 'software', 2, 'Class', 129703562),
-(127, 'software', 3, 'Constructor', 129703562),
-(128, 'software', 4, 'Array', 129703562),
-(129, 'software', 5, 'Artificial intelligence', 129703562),
-(130, 'software', 6, 'True', 129703562),
-(131, 'software', 7, 'Algorithm', 129703562),
-(132, 'software', 8, 'Random', 129703562),
-(133, 'software', 9, 'Reserved', 129703562),
-(134, 'software', 10, 'If else loop', 129703562),
-(135, 'networking', 1, 'Network', 129703562),
-(136, 'networking', 2, 'Is a device connected to a network', 129703562),
-(137, 'networking', 3, 'Link', 129703562),
-(138, 'networking', 4, 'Interface layer', 129703562),
-(139, 'networking', 5, 'Encapsulation', 129703562),
-(140, 'networking', 6, 'HTTPs', 129703562),
-(141, 'networking', 7, '4', 129703562),
-(142, 'networking', 8, 'Communication', 129703562),
-(143, 'networking', 9, 'Ping', 129703562),
-(144, 'networking', 10, 'MAC address', 129703562),
-(145, 'software', 5, 'Artificial intelligence', 485523257),
-(146, 'software', 6, 'True', 485523257),
-(147, 'software', 7, 'Flow chart', 485523257),
-(148, 'software', 8, 'Runtime', 485523257),
-(149, 'software', 9, 'Reserved', 485523257),
-(150, 'software', 10, 'While', 485523257),
-(151, 'networking', 1, 'Computers', 485523257),
-(152, 'networking', 2, 'Is a system of computers', 485523257),
-(153, 'networking', 3, 'Link', 485523257),
-(154, 'networking', 4, 'Physical layer', 485523257),
-(155, 'networking', 5, 'Encapsulation', 485523257),
-(156, 'networking', 6, 'HTTPs', 485523257),
-(157, 'networking', 7, '9', 485523257),
-(158, 'networking', 8, 'Transmission', 485523257),
-(159, 'networking', 9, 'Tracert', 485523257),
-(160, 'networking', 10, 'Ip address', 485523257);
+(161, 'hardware', 1, 'Hybrid computer', 1617611936),
+(162, 'hardware', 2, 'Write Original Read Memory', 1617611936),
+(163, 'hardware', 3, 'Control unit', 1617611936),
+(164, 'hardware', 4, 'Multiprocessing', 1617611936),
+(165, 'hardware', 5, 'Address bus and data bus', 1617611936),
+(166, 'hardware', 6, 'Keyboard', 1617611936),
+(167, 'hardware', 7, 'Video card', 1617611936),
+(168, 'hardware', 8, 'Navigation keys', 1617611936),
+(169, 'hardware', 9, 'Output/input devices', 1617611936),
+(170, 'hardware', 10, 'ROM', 1617611936),
+(171, 'software', 1, 'Programming language', 1617611936),
+(172, 'software', 2, 'Method', 1617611936),
+(173, 'software', 3, 'Abstract', 1617611936),
+(174, 'software', 4, 'Variable', 1617611936),
+(175, 'software', 5, 'Artificial intelligence', 1617611936),
+(176, 'software', 6, 'True', 1617611936),
+(177, 'software', 7, 'Algorithm', 1617611936),
+(178, 'software', 8, 'Runtime', 1617611936),
+(179, 'software', 9, 'Basic', 1617611936),
+(180, 'software', 10, 'While', 1617611936),
+(181, 'networking', 1, 'Node', 1617611936),
+(182, 'networking', 2, 'Is a computer network', 1617611936),
+(183, 'networking', 3, 'Cable', 1617611936),
+(184, 'networking', 4, 'Interface layer', 1617611936),
+(185, 'networking', 5, 'Inheritance', 1617611936),
+(186, 'networking', 6, 'HTTPs', 1617611936),
+(187, 'networking', 7, '9', 1617611936),
+(188, 'networking', 8, 'Connection', 1617611936),
+(189, 'networking', 9, 'Ping', 1617611936),
+(190, 'networking', 10, 'Ip address', 1617611936);
 
 -- --------------------------------------------------------
 
@@ -657,7 +569,16 @@ CREATE TABLE `tbl_supervisor_assess` (
 --
 
 INSERT INTO `tbl_supervisor_assess` (`id`, `studentid`, `supid`, `intelmarks`, `intelremarks`, `indmarks`, `indremarks`, `commarks`, `comremarks`, `innomarks`, `innoremarks`, `appmarks`, `appremarks`, `total`, `totalremarks`, `date`) VALUES
-(1, '633681579', '381586187', 3, 'A', 4, 'S', 3, 'D', 4, 'F', 5, 'G', 19, 'T', '2021-06-16 16:16:58');
+(8, '1617611936', '381586187', 5, 'Rsr', 5, 'hjhjhjhjh', 5, 'ghgdhd', 5, ' fgdfgf', 5, '45455', 55, 'edfwre', '2021-07-27 20:53:33');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `student_view`
+--
+DROP TABLE IF EXISTS `student_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `student_view`  AS SELECT `students`.`fname` AS `fname`, `students`.`lname` AS `lname`, `students`.`regno` AS `regno`, `students`.`supervisor` AS `supervisor`, `students`.`csupervisor` AS `csupervisor`, `students`.`course` AS `course`, `students`.`year` AS `year` FROM `students` ;
 
 --
 -- Indexes for dumped tables
@@ -743,7 +664,7 @@ ALTER TABLE `tbl_supervisor_assess`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `company_supervisors`
@@ -761,7 +682,7 @@ ALTER TABLE `school_supervisors`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_answers`
@@ -779,13 +700,13 @@ ALTER TABLE `tbl_attachments`
 -- AUTO_INCREMENT for table `tbl_csupervisor_assess`
 --
 ALTER TABLE `tbl_csupervisor_assess`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_logbook`
 --
 ALTER TABLE `tbl_logbook`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_questions`
@@ -797,19 +718,19 @@ ALTER TABLE `tbl_questions`
 -- AUTO_INCREMENT for table `tbl_registered_attachments`
 --
 ALTER TABLE `tbl_registered_attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_responses`
 --
 ALTER TABLE `tbl_responses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `tbl_supervisor_assess`
 --
 ALTER TABLE `tbl_supervisor_assess`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
