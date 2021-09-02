@@ -43,16 +43,16 @@ include "includes/header.php";
                             <tr>
                                 <th scope="row">1</th>
                                 <td>School Supervisor Assessment</td>
-                                <td>23</td>
+                                <td><?php echo  getSAssessmentScore($_GET["studentid"]) ." / 30"?></td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
                                 <td>Company Supervisor Assessment</td>
-                                <td colspan="2">34</td>
+                                <td colspan="2"><?php echo  getCAssessmentScore($_GET["studentid"]) ." / 40" ?></td>
                             </tr>
                             <tr>
                                 <th colspan="2">Total</th>
-                                <td colspan="2">345</td>
+                                <td colspan="2"><?php echo  getCAssessmentScore($_GET["studentid"])+getSAssessmentScore($_GET["studentid"]) ?></td>
                             </tr>
 
                         </tbody>

@@ -233,6 +233,12 @@ if ($exists) {
                             <td><input <?php if ($exists) {echo "disabled";} ?> value="<?php echo $fifteenmarks ?>" name="fifteenmarks" type="number" max="5" class="form-control"></td>
                             <td><textarea <?php if ($exists) {echo "disabled";} ?> name="fifteenremarks" id="" cols="30" rows="1" class="form-control"><?php echo $fifteenremarks ?></textarea></td>
                         </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td></td>
+                            <td><input disabled  value="<?php if ($exists) {echo getCAssessmentScore($studentid);} ?>"  class="form-control"></td>
+                            
+                        </tr>
                     </tbody>
                 </table>
                 <br>

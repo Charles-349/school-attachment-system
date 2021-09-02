@@ -71,10 +71,6 @@ function Footer()
             $pdf->Cell(25, 8, number_format((float)$total, 2,'.', '')."%", 1);
 
         }
-        else{
-            $pdf->Ln();
-            $pdf->Cell(10, 8, "No Record Found", 7);
-        }
     }
 $pdf->Output();
 

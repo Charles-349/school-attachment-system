@@ -135,7 +135,6 @@ if ($exists) {
                             <th>Total</th>
                             <td>30</td>
                             <td><input <?php if ($exists) {echo "disabled";} ?> disabled value="<?php echo $totalmarks ?>" name="totalmarks" type="number" max="5" class="form-control"></td>
-                            <td><textarea <?php if ($exists) {echo "disabled";} ?> name="totalremarks" id="" cols="30" rows="2" class="form-control"><?php echo $totalremarks ?></textarea></td>
                         </tr>
                     </tbody>
                 </table>

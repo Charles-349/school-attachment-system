@@ -56,9 +56,9 @@ function Footer()
         $total = getAssessmentResult($row["uniqueid"]);
         $cassess = getCAssessmentScore($row["uniqueid"]);
         $sassess = getSAssessmentScore($row["uniqueid"]);
-        $count += 1;
         
         if($total > 40){
+            $count += 1;
 
             $pdf->Ln();
             $pdf->Cell(10, 8, $count, 1);
@@ -70,10 +70,6 @@ function Footer()
             $pdf->Cell(25, 8, $cassess." / 40", 1);
             $pdf->Cell(25, 8, number_format((float)$total, 2,'.', '')."%", 1);
 
-        }
-        else{
-            $pdf->Ln();
-            $pdf->Cell(10, 8, "No Record Found", 7);
         }
     }
 $pdf->Output();

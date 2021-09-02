@@ -23,12 +23,42 @@ function getAllAssignedStudents($csupid){
                 <td><?php echo $comrow['startdate'] ?></td>
                 <td><?php echo $comrow['duration']." Weeks" ?></td>
                 <td> <a href="assess.php?studentid=<?php echo $row['uniqueid'] ?>" class="btn btn-outline-success">Assess</a></td>
+                <td> <a href="logbook.php?studentid=<?php echo $row['uniqueid'] ?>&week=1" class="btn btn-outline-success">Log book</a></td>
             </tr>
 <?php
         }
     } else {
         echo "<tr><td colspan='5'>No Student Assigned</td></tr>";
     }
+}
+
+function getCAssessmentScore($id)
+{
+    include "includes/config.php";
+    $cmarks = 0;
+    $result = mysqli_query($conn, "SELECT *  from tbl_csupervisor_assess where studentid = $id");
+
+    $row = mysqli_fetch_assoc($result);
+
+    $cmarks += $row['onemarks'];
+    $cmarks += $row['twomarks'];
+    $cmarks += $row['threeamarks'];
+    $cmarks += $row['threebmarks'];
+    $cmarks += $row['threecmarks'];
+    $cmarks += $row['threedmarks'];
+    $cmarks += $row['fivemarks'];
+    $cmarks += $row['sixmarks'];
+    $cmarks += $row['sevenmarks'];
+    $cmarks += $row['eightmarks'];
+    $cmarks += $row['ninemarks'];
+    $cmarks += $row['tenmarks'];
+    $cmarks += $row['elevenmarks'];
+    $cmarks += $row['twelvemarks'];
+    $cmarks += $row['thirteenmarks'];
+    $cmarks += $row['fourteenmarks'];
+    $cmarks += $row['fifteenmarks'];
+
+    return $cmarks;
 }
 
 ?>
