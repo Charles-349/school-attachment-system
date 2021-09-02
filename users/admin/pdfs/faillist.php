@@ -56,10 +56,10 @@ function Footer()
         $total = getAssessmentResult($row["uniqueid"]);
         $cassess = getCAssessmentScore($row["uniqueid"]);
         $sassess = getSAssessmentScore($row["uniqueid"]);
-        $count += 1;
         
         if($total < 40){
-
+            
+            $count += 1;
             $pdf->Ln();
             $pdf->Cell(10, 8, $count, 1);
             $pdf->Cell(25, 8, $row["fname"], 1);
