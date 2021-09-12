@@ -15,6 +15,15 @@ $week = $_GET['week'];
 $checkresult  = mysqli_query($conn, "SELECT * FROM `tbl_registered_attachments` where studentid='$sid'");
 $logresult  = mysqli_query($conn, "SELECT * FROM `tbl_logbook` where studentid='$sid' and week='$week' ");
 
+$datecount = $week-1;
+$mon_date = date("Y-m-d", strtotime(' +'.($datecount * 7+1).' day'));
+$tue_date = date("Y-m-d", strtotime(' +'.($datecount * 7+2).' day'));
+$wen_date = date("Y-m-d", strtotime(' +'.($datecount * 7+3).' day'));
+$thur_date = date("Y-m-d", strtotime(' +'.($datecount * 7+4).' day'));
+$fri_date = date("Y-m-d", strtotime(' +'.($datecount * 7+5).' day'));
+$sat_date = date("Y-m-d", strtotime(' +'.($datecount * 7+6).' day'));
+$sun_date = date("Y-m-d", strtotime(' +'.($datecount * 7+7).' day'));
+
 $mondayjob = "";
 $mondayskill = "";
 $tuesdayjob = "";
@@ -49,6 +58,7 @@ include "myFunctions.php";
 
     <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
         <h4 class="text-success my-3 ml-4">Log Book</h4>
+        
         <hr>
         <?php if (mysqli_num_rows($checkresult) < 1) : ?>
             <div class="row m-2">
@@ -74,7 +84,9 @@ include "myFunctions.php";
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Monday</td>
+                                <td>
+                                    <p>Monday</p>
+                                    <p><?php echo $mon_date; ?></p>
                                 <td>
                                     <textarea class="form-control" name="mondayjob" id="" cols="30" rows="4"><?php echo $mondayjob; ?></textarea>
                                 </td>
@@ -83,7 +95,10 @@ include "myFunctions.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tuesday</td>
+                                <td>
+                                    <p>Tuesday</p>
+                                    <p><?php echo $tue_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea class="form-control" name="tuesdayjob" id="" cols="30" rows="4"><?php echo $tuesdayjob; ?></textarea>
                                 </td>
@@ -92,7 +107,10 @@ include "myFunctions.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Wednesday</td>
+                                <td>
+                                    <p>Wednesday</p>
+                                    <p><?php echo $wen_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea class="form-control" name="wednesdayjob" id="" cols="30" rows="4"><?php echo $wednesdayjob; ?></textarea>
                                 </td>
@@ -101,7 +119,10 @@ include "myFunctions.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Thursday</td>
+                                <td>
+                                    <p>Thursday</p>
+                                    <p><?php echo $thur_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea class="form-control" name="thursdayjob" id="" cols="30" rows="4"><?php echo $thursdayjob; ?></textarea>
                                 </td>
@@ -110,7 +131,10 @@ include "myFunctions.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Friday</td>
+                                <td>
+                                    <p>Friday</p>
+                                    <p><?php echo $fri_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea class="form-control" name="fridayjob" id="" cols="30" rows="4"><?php echo $fridayjob; ?></textarea>
                                 </td>
@@ -128,6 +152,10 @@ include "myFunctions.php";
                     <button id="saveBtn" <?php if (mysqli_num_rows($logresult) > 0) {
                                                 echo "disabled" . " " . "style='cursor: not-allowed;'";
                                             } ?> type="submit" class="btn btn-success btn-lg">Save</button>
+                        <hr>
+                            <a href="pdfs/logbook.php?sid=<?php echo $sid; ?>" target="_blank" class="btn btn-primary mx-5 text-white">Export Log Book</a>
+                        <hr>
+
                 </div>
             </form>
         <?php endif ?>

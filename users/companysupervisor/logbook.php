@@ -66,7 +66,7 @@ include "functions_all.php";
 
     <div class="col col-sm-12 col-md-8 col-lg-10 main-content">
     <h1 class="my-2 ml-2 text-center">LOGBOOK</h1>
-        <h4 class="text-success my-2 ml-2 text-center"><?php echo $studentarray['fname'] ." ". $studentarray['fname']. " > ". $studentarray['regno'] ?></h4>
+        <h4 class="text-success my-2 ml-2 text-center"><?php echo $studentarray['fname'] ." ". $studentarray['lname']. " > ". $studentarray['regno'] ?></h4>
         <hr>
         <a href="pdfs/logbook.php?sid=<?php echo $sid; ?>" target="_blank" class="btn btn-primary mx-5 text-white">Export Log Book</a>
         <hr>
