@@ -165,11 +165,9 @@ include "functions_all.php";
     const form = document.querySelector("#logForm");
     const nextBtn = document.querySelector("#nextBtn");
     const prevBtn = document.getElementById("prevBtn");
-
     form.onsubmit = (e) => {
         e.preventDefault();
     };
-
     prevBtn.addEventListener('click', () => {
         const studentid =location.search.split("week=")[0].split("=")[1].split("&")[0];
         const week = parseInt(location.search.split("week=")[1]);
