@@ -131,7 +131,7 @@ include "functions_all.php";
                             </tr>
                             <tr>
                                 <td>
-                                <p>Thursday</p>
+                                    <p>Thursday</p>
                                     <p><?php echo $thur_date; ?></p>
                                 </td>
                                 <td>
@@ -143,7 +143,7 @@ include "functions_all.php";
                             </tr>
                             <tr>
                                 <td>
-                                <p>Friday</p>
+                                    <p>Friday</p>
                                     <p><?php echo $fri_date; ?></p>
                                 </td>
                                 <td>

@@ -128,7 +128,10 @@ include "functions_all.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Thursday</td>
+                                <td>
+                                    <p>Thursday</p>
+                                    <p><?php echo $thur_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea disabled class="form-control" name="thursdayjob" id="" cols="30" rows="4"><?php echo $thursdayjob; ?></textarea>
                                 </td>
@@ -137,7 +140,10 @@ include "functions_all.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Friday</td>
+                                <td>
+                                    <p>Friday</p>
+                                    <p><?php echo $fri_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea disabled class="form-control" name="fridayjob" id="" cols="30" rows="4"><?php echo $fridayjob; ?></textarea>
                                 </td>
