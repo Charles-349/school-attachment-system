@@ -24,6 +24,15 @@ if (mysqli_num_rows($studentres) >= 1){
 $checkresult  = mysqli_query($conn, "SELECT * FROM `tbl_registered_attachments` where studentid='$sid'");
 $logresult  = mysqli_query($conn, "SELECT * FROM `tbl_logbook` where studentid='$sid' and week='$week' ");
 
+$datecount = $week-1;
+$mon_date = date("Y-m-d", strtotime(' +'.($datecount * 7+1).' day'));
+$tue_date = date("Y-m-d", strtotime(' +'.($datecount * 7+2).' day'));
+$wen_date = date("Y-m-d", strtotime(' +'.($datecount * 7+3).' day'));
+$thur_date = date("Y-m-d", strtotime(' +'.($datecount * 7+4).' day'));
+$fri_date = date("Y-m-d", strtotime(' +'.($datecount * 7+5).' day'));
+$sat_date = date("Y-m-d", strtotime(' +'.($datecount * 7+6).' day'));
+$sun_date = date("Y-m-d", strtotime(' +'.($datecount * 7+7).' day'));
+
 $mondayjob = "";
 $mondayskill = "";
 $tuesdayjob = "";
@@ -83,7 +92,10 @@ include "functions_all.php";
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Monday</td>
+                                <td>
+                                    <p>Monday</p>
+                                    <p><?php echo $mon_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea disabled class="form-control" name="mondayjob" id="" cols="30" rows="4"><?php echo $mondayjob; ?></textarea>
                                 </td>
@@ -92,7 +104,10 @@ include "functions_all.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tuesday</td>
+                                <td>
+                                    <p>Tuesday</p>
+                                    <p><?php echo $tue_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea disabled class="form-control" name="tuesdayjob" id="" cols="30" rows="4"><?php echo $tuesdayjob; ?></textarea>
                                 </td>
@@ -101,7 +116,10 @@ include "functions_all.php";
                                 </td>
                             </tr>
                             <tr>
-                                <td>Wednesday</td>
+                                <td>
+                                    <p>Wednesday</p>
+                                    <p><?php echo $wen_date; ?></p>
+                                </td>
                                 <td>
                                     <textarea disabled class="form-control" name="wednesdayjob" id="" cols="30" rows="4"><?php echo $wednesdayjob; ?></textarea>
                                 </td>
