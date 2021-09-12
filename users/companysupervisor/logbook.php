@@ -68,6 +68,8 @@ include "functions_all.php";
     <h1 class="my-2 ml-2 text-center">LOGBOOK</h1>
         <h4 class="text-success my-2 ml-2 text-center"><?php echo $studentarray['fname'] ." ". $studentarray['fname']. " > ". $studentarray['regno'] ?></h4>
         <hr>
+        <a href="pdfs/logbook.php?sid=<?php echo $sid; ?>" target="_blank" class="btn btn-primary mx-5 text-white">Export Log Book</a>
+        <hr>
         <?php if (mysqli_num_rows($checkresult) < 1) : ?>
             <div class="row m-2">
                 <h5>No Logbook Availabler.....check the student ID</h5>
